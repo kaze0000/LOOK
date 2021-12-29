@@ -1,5 +1,5 @@
 class Clothe < ApplicationRecord
-  mount_uploader :image, ClothImageUploader
+  mount_uploader :image, ClotheImageUploader
   belongs_to :user
   belongs_to :brandname
 
