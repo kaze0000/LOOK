@@ -1,1 +1,101 @@
 <%= render 'shared/nav' %>
+<div class="box-wrapper">
+  <div class="canvas-wrapper">
+    <canvas id="canvas" width="600" height="600"></canvas>
+  </div>
+</div>
+<div class="buttons flex">
+  <button type="button" id="download">Download</button>
+  <button type="button" id="deleteBtn">Delete</button>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.4.0/fabric.min.js"></script>
+<script>
+    var w = $('.canvas-wrapper').width();
+    var h = $('.canvas-wrapper').height();
+    $('#canvas').attr('width', w);
+    $('#canvas').attr('height', h);
+    // ダウンロード
+    document.getElementById("download").onclick = (event) => {
+      let canvas = document.getElementById("canvas");
+
+      let link = document.createElement("a");
+      link.href = canvas.toDataURL("image/jpg");
+      link.download = "test.jpg";
+      link.click();
+    }
+    // 即時関数。関数を定義すると同時に実行する。
+    (function () {
+      var canvas = new fabric.Canvas('canvas', {
+        // preserveObjectStacking: false
+      });
+
+      var srcs_pants = [
+        'assets/pants2.png',
+        'assets/pants.png'
+      ];
+      var srcs_tops = [
+        'assets/tops2.png',
+        'assets/tops.png'
+      ];
+
+      for (var i in srcs_pants) {
+        fabric.Image.fromURL(`${srcs_pants[i]}`, function (oImg) {
+          pants = oImg;
+          oImg.setControlsVisibility({
+            mt: false,	// middle top
+            mb: false,	// middle bottom
+            ml: false,	// middle left
+            mr: false,	// middle right
+            //br: false,	// bottom right
+            mtr: false,	// middle top rotete
+          }); // 各コントロールをON/OFF制御
+          canvas.add(oImg);
+        });
+      };
+      for (var i in srcs_tops) {
+        fabric.Image.fromURL(`${srcs_tops[i]}`, function (oImg) {
+
+          tops = oImg;
+          console.log(tops);
+          oImg.setControlsVisibility({
+            mt: false,	// middle top
+            mb: false,	// middle bottom
+            ml: false,	// middle left
+            mr: false,	// middle right
+            //br: false,	// bottom right
+            mtr: false,	// middle top rotete
+          }); // 各コントロールをON/OFF制御
+          canvas.add(oImg);
+        });
+      };
+
+  function deleteObj() {
+    //選択されているオブジェクトを削除する。
+    let activeObjects = canvas.getActiveObjects();
+
+    if (activeObjects != null) {
+      if (confirm('選択された箇所を削除しますか？')) {
+        activeObjects.forEach(obj => {
+
+          //対象オブジェクトを削除
+          canvas.remove(obj);
+
+          //矩形のIDとcanvas.item紐づけ用配列も削除する。
+          let arrIndex = arrayRect.indexOf(obj.id);
+          arrayRect.splice(arrIndex, 1);
+        });
+      }
+    } else {
+      alert("オブジェクトが選択されていません。");
+    }
+  }
+  deleteBtn.addEventListener('click', deleteObj, false);
+})();
+    // window.onload = function () {
+    //   // 直接順番指定
+    //   tops.moveTo(100);
+    //   pants.moveTo(0);
+    // };
+</script> 
