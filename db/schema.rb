@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2021_12_29_055124) do
     t.bigint "brand_name_id", null: false
     t.integer "type"
     t.string "image"
-    t.string "string"
     t.integer "gender"
     t.boolean "selected"
     t.datetime "created_at", precision: 6, null: false
