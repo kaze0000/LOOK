@@ -1,4 +1,5 @@
 <%= render 'shared/nav' %>
+<%= "#{Clothe.where(selected: true).count}件選択中です"%>
 <% @clothes.each do |clothe| %>
 <div class="contents-wrapper">
   <div class="flex">
@@ -12,8 +13,13 @@
       <%= image_tag clothe.image.url %>
       <div class="item-detail"><%= clothe.brand_name.name %><br><%= clothe.genre %></div>
     </div>
-      <div class="item-details">
-        <%# <%= button_to '選択する', clothe_selected_path(clothe), {method: :get }%> 
+      <div class="item-details" id="test">
+      <% if clothe.selected %>
+        <%= button_to '選択を解除', clothe_path(clothe, clothe: {selected: false}), remote: true,method: :put %>
+      <% else %>
+        <%= button_to '選択する', clothe_path(clothe, clothe: {selected: true}), method: :put %>
+      <% end %>
+        <%# <%= button_to '選択する', clothe_path(clothe), {method: :put } %> 
       </div>
     </div> 
   </div>
