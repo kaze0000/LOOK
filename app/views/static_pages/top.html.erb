@@ -1,4 +1,7 @@
 <%= render 'shared/nav' %>
+<% if @selected_clothes.present?%>
+<div id="selected_clothes" data-json="<%= @selected_clothes.image.url.to_json%>">
+<% end %>
 <div class="box-wrapper">
   <div class="canvas-wrapper">
     <canvas id="canvas" width="600" height="600"></canvas>
@@ -30,10 +33,8 @@
       var canvas = new fabric.Canvas('canvas', {
         // preserveObjectStacking: false
       });
-
       var srcs_pants = [
-        'assets/pants2.png',
-        'assets/pants.png'
+        JSON.parse(document.getElementById('selected_clothes').dataset.json)
       ];
       var srcs_tops = [
         'assets/tops2.png',

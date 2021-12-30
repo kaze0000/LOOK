@@ -1,5 +1,6 @@
 class ClothesController < ApplicationController
   def index
-    @clothes = Clothe.find(1)
+    @clothes = Clothe.all
   end
+
 end

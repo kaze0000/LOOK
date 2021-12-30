@@ -1,4 +1,21 @@
 <%= render 'shared/nav' %>
-<%= image_tag @clothes.image.url %>
-<h1>Clothes#index</h1>
-<p>Find me in app/views/clothes/index.html.erb</p>
+<% @clothes.each do |clothe| %>
+<div class="contents-wrapper">
+  <div class="flex">
+    <button class="button">組み合わせる</button>
+    <%= button_to '組み合わせる', root_path, {method: :get }%>
+    <input type="search">
+  </div>
+  <div class="flex">
+    <div class="item">
+    <div class="image-container">
+      <%= image_tag clothe.image.url %>
+      <div class="item-detail"><%= clothe.brand_name.name %><br><%= clothe.genre %></div>
+    </div>
+      <div class="item-details">
+        <%# <%= button_to '選択する', clothe_selected_path(clothe), {method: :get }%> 
+      </div>
+    </div> 
+  </div>
+</div>
+<% end %>
