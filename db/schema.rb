@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2021_12_29_055124) do
   create_table "clothes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "brand_name_id", null: false
-    t.integer "type"
+    t.integer "genre"
     t.string "image"
     t.integer "gender"
     t.boolean "selected"
