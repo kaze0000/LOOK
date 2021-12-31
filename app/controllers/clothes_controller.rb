@@ -3,19 +3,23 @@ class ClothesController < ApplicationController
     @clothes = Clothe.all
   end
 
-  def update
-    @clothe =  Clothe.find(params[:id])
+  # def update
+  #   @clothe =  Clothe.find(params[:id])
     # if  @clothe.selected == false
     #   @clothe.update(selected: true)
     # else
     #   @clothe.update(selected: false)
     # end
     # redirect_to clothes_path
-    if @clothe.update(clothe_params)
-      redirect_to clothes_path
-    else
-      redirect_to clothes_path, notice: 'Error occurs'
-    end
+    # if @clothe.update(clothe_params)
+    #   redirect_to clothes_path
+    # else
+    #   redirect_to clothes_path, notice: 'Error occurs'
+    # end
+  # end
+  def update
+    @clothe = Clothe.find(params[:id])
+    @clothe.update(clothe_params)
   end
 
   private
