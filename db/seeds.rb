@@ -15,11 +15,35 @@
 # BrandName.create!(
 #   name: 'uniqlo'
 # )
+# Clothe.create!(
+#   user_id: 1,
+#   brand_name_id: 1,
+#   genre: 2,
+#   image: File.open("./app/assets/images/pants.png"),
+#   gender: 0,
+#   selected: false
+# )
+# Clothe.create!(
+#   user_id: 1,
+#   brand_name_id: 1,
+#   genre: 1,
+#   image: File.open("./app/assets/images/tops.png"),
+#   gender: 0,
+#   selected: false
+# )
+# Clothe.create!(
+#   user_id: 1,
+#   brand_name_id: 1,
+#   genre: 2,
+#   image: File.open("./app/assets/images/pants2.png"),
+#   gender: 0,
+#   selected: false
+# )
 Clothe.create!(
   user_id: 1,
   brand_name_id: 1,
   genre: 1,
-  image: File.open("./app/assets/images/pants.png"),
+  image: File.open("./app/assets/images/outer.png"),
   gender: 1,
   selected: false
 )

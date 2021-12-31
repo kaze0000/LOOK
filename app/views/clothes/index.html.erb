@@ -1,4 +1,27 @@
 <%= render 'shared/nav' %>
-<%= image_tag @clothes.image.url %>
-<h1>Clothes#index</h1>
-<p>Find me in app/views/clothes/index.html.erb</p>
+<%= "#{Clothe.where(selected: true).count}件選択中です"%>
+<% @clothes.each do |clothe| %>
+<div class="contents-wrapper">
+  <div class="flex">
+    <%# <button class="button">組み合わせる</button> %>
+    <%= button_to '組み合わせる', root_path , method: :get, 'data-turbolinks': false %>
+    <input type="search">
+  </div>
+  <div class="flex">
+    <div class="item">
+    <div class="image-container">
+      <%= image_tag clothe.image.url %>
+      <div class="item-detail"><%= clothe.brand_name.name %><br><%= clothe.genre %></div>
+    </div>
+      <div class="item-details" id="item-details-<%=clothe.id%>">
+        <% if clothe.selected %>
+          <%= button_to '選択を解除', clothe_path(clothe,clothe: {selected: false}), remote: true,method: :put %>
+        <% else %>
+          <%= button_to '選択する', clothe_path(clothe, clothe: {selected: true}), remote: true,method: :put %>
+        <% end %>
+        <%# <%= button_to '選択する', clothe_path(clothe), {method: :put } %> 
+      </div>
+    </div> 
+  </div>
+</div>
+<% end %>

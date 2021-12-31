@@ -1,0 +1,14 @@
+@import "./mixin";
+.item-details{
+  display: flex;
+  justify-content: space-evenly;
+  @include sp{
+    display: block;
+  }
+  .button{
+    flex-basis: 40%;
+  }
+}
+.item-detail{
+  flex-basis: 40%;
+}

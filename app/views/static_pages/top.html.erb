@@ -1,4 +1,20 @@
 <%= render 'shared/nav' %>
+<div id="selected-bottoms-true" data-json="<%=@selected_bottoms.present?%>">
+<% if @selected_bottoms.present?%>
+  <% for n in 0...@selected_bottoms.count %>
+    <div id="selected-bottoms-count" data-json="<%= @selected_bottoms.count %>">
+    <div id="selected-bottoms-<%=n%>" data-json="<%= @selected_bottoms[n].image.url.to_json%>">
+    </div>
+  <% end %>
+<% end %>
+<div id="selected-tops-true" data-json="<%=@selected_tops.present?%>">
+<% if @selected_tops.present?%>
+  <% for n in 0...@selected_tops.count %>
+    <div id="selected-tops-count" data-json="<%= @selected_tops.count %>">
+    <div id="selected-tops-<%=n%>" data-json="<%= @selected_tops[n].image.url.to_json%>">
+    </div>
+  <% end %>
+<% end %>
 <div class="box-wrapper">
   <div class="canvas-wrapper">
     <canvas id="canvas" width="600" height="600"></canvas>
@@ -31,18 +47,25 @@
         // preserveObjectStacking: false
       });
 
-      var srcs_pants = [
-        'assets/pants2.png',
-        'assets/pants.png'
-      ];
-      var srcs_tops = [
-        'assets/tops2.png',
-        'assets/tops.png'
-      ];
+      if (JSON.parse(document.getElementById("selected-bottoms-true").dataset.json)){
+        N = JSON.parse(document.getElementById("selected-bottoms-count").dataset.json);
+        var srcs_bottoms = [];
+        for(var n = 0; n < N; n++){
+          srcs_bottoms.push(JSON.parse(document.getElementById(`selected-bottoms-${n}`).dataset.json))
+        };
+      }
 
-      for (var i in srcs_pants) {
-        fabric.Image.fromURL(`${srcs_pants[i]}`, function (oImg) {
-          pants = oImg;
+      if (JSON.parse(document.getElementById("selected-tops-true").dataset.json)){
+      N = JSON.parse(document.getElementById("selected-tops-count").dataset.json);
+      var srcs_tops = [];
+      for(var n = 0; n < N; n++){
+        srcs_tops.push(JSON.parse(document.getElementById(`selected-tops-${n}`).dataset.json))
+      };
+      }
+
+      for (var i in srcs_bottoms) {
+        fabric.Image.fromURL(`${srcs_bottoms[i]}`, function (oImg) {
+          bottoms = oImg;
           oImg.setControlsVisibility({
             mt: false,	// middle top
             mb: false,	// middle bottom
@@ -93,9 +116,9 @@
   }
   deleteBtn.addEventListener('click', deleteObj, false);
 })();
-    // window.onload = function () {
-    //   // 直接順番指定
-    //   tops.moveTo(100);
-    //   pants.moveTo(0);
-    // };
+    window.onload = function () {
+      // 直接順番指定
+      tops.moveTo(100);
+      bottoms.moveTo(0);
+    };
 </script> 

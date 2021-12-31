@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   delete 'login',to: 'user_sessions#destroy'
 
   resources :users, only: %i[new create]
-  resources :clothes, only: %i[index]
+  resources :clothes, only: %i[index update]
 end
