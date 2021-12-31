@@ -1,1 +1,7 @@
-$("#link").attr("href", "<%= clothe_path(clothe: {selected: !@clothe.selected}) %>")
+$("#change-selected-link-<%=@clothe.id%>").attr("href", "<%= clothe_path(@clothe,clothe: {selected: !@clothe.selected})%>");
+<% if @clothe.selected %>
+  $("#change-subscribed-link-<%=@clothe.id%>").text("選択を解除する");
+<% else %>
+  $("#change-subscribed-link-<%=@clothe.id%>").text("選択する");
+<%end%>
+

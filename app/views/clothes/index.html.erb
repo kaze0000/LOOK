@@ -1,27 +1,26 @@
 <%= render 'shared/nav' %>
-<%= "#{Clothe.where(selected: true).count}件選択中です"%>
-<% @clothes.each do |clothe| %>
 <div class="contents-wrapper">
+  <%= "#{Clothe.where(selected: true).count}件選択中です"%>
   <div class="flex">
-    <%# <button class="button">組み合わせる</button> %>
-    <%= button_to '組み合わせる', root_path , method: :get, 'data-turbolinks': false %>
+    <%= button_to '組み合わせる', root_path , method: :get, 'data-turbolinks': false, class: 'button' %>
     <input type="search">
   </div>
-  <div class="flex">
-    <div class="item">
-    <div class="image-container">
-      <%= image_tag clothe.image.url %>
-      <div class="item-detail"><%= clothe.brand_name.name %><br><%= clothe.genre %></div>
-    </div>
-      <div class="item-details" id="item-details-<%=clothe.id%>">
-        <% if clothe.selected %>
-          <%= button_to '選択を解除', clothe_path(clothe,clothe: {selected: false}), remote: true,method: :put %>
-        <% else %>
-          <%= button_to '選択する', clothe_path(clothe, clothe: {selected: true}), remote: true,method: :put %>
-        <% end %>
-        <%# <%= button_to '選択する', clothe_path(clothe), {method: :put } %> 
-      </div>
-    </div> 
+  <div class="items">
+    <% @clothes.each do |clothe| %>
+        <div class="item">
+          <p class="item-img"><%= image_tag clothe.image.url %></p>
+          <div class="item-detail"><%= clothe.brand_name.name %><br><%= clothe.genre %></div>
+          <div class="item-details">
+            <!--
+            <% if clothe.selected %>
+            <%= link_to '選択を解除する', clothe_path(clothe, clothe: {selected: false}), id: "change-selected-false-#{clothe.id}",remote: true,method: :put, class:'button' %>
+            <% else %>
+            <%= link_to '選択する', clothe_path(clothe, clothe: {selected: true}), id: "change-selected-true-#{clothe.id}",remote: true,method: :put, class:'button' %>
+            <% end %>
+            -->
+            <%= link_to '選択する',clothe_path(clothe ,clothe: {selected: !clothe.selected}), class:"button",id: "change-selected-link-#{clothe.id}", remote: true, method: :patch%>
+          </div>
+        </div> 
+  <% end %>
   </div>
 </div>
-<% end %>
