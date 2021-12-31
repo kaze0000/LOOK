@@ -1,27 +1,28 @@
 <%= render 'shared/nav' %>
-<%= "#{Clothe.where(selected: true).count}件選択中です"%>
-<% @clothes.each do |clothe| %>
 <div class="contents-wrapper">
   <div class="flex">
-    <%# <button class="button">組み合わせる</button> %>
-    <%= button_to '組み合わせる', root_path , method: :get, 'data-turbolinks': false %>
-    <input type="search">
-  </div>
-  <div class="flex">
-    <div class="item">
-    <div class="image-container">
-      <%= image_tag clothe.image.url %>
-      <div class="item-detail"><%= clothe.brand_name.name %><br><%= clothe.genre %></div>
+    <%= link_to '組み合わせる', root_path , method: :get, 'data-turbolinks': false, class: 'button' %>
+    <div class="search-forms">
+      <input type="search" placeholder="カテゴリーから探す プルダウン">
+      <input type="search" placeholder="ブランド名から探す">
     </div>
-      <div class="item-details" id="item-details-<%=clothe.id%>">
-        <% if clothe.selected %>
-          <%= button_to '選択を解除', clothe_path(clothe,clothe: {selected: false}), remote: true,method: :put %>
-        <% else %>
-          <%= button_to '選択する', clothe_path(clothe, clothe: {selected: true}), remote: true,method: :put %>
-        <% end %>
-        <%# <%= button_to '選択する', clothe_path(clothe), {method: :put } %> 
-      </div>
-    </div> 
   </div>
+  <div class="items">
+    <% @clothes.each do |clothe| %>
+        <div id="js-item-<%=clothe.id%>" class="item opacity">
+          <p class="item-img"><%= image_tag clothe.image.url %></p>
+          <div class="item-detail-wrapper">
+            <div class="item-detail">
+              <div style="font-size:1.4rem"><%= clothe.brand_name.name %></div>
+              <div>#<%= clothe.genre %></div>
+            </div>
+            <div class="item-select-button">
+              <%= link_to '選択する',clothe_path(clothe, clothe: { selected: !clothe.selected }), class: "button",id: "js-change-selected-link-#{clothe.id}", remote: true, method: :patch%>
+            </div>
+          </div>
+        </div> 
+  <% end %>
+  </div>
+  <p id="js-selected-count" class="selected-count"></p>
 </div>
-<% end %>
+

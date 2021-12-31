@@ -1,1 +1,10 @@
-$("#link").attr("href", "<%= clothe_path(clothe: {selected: !@clothe.selected}) %>")
+$("#js-change-selected-link-<%=@clothe.id%>").attr("href", "<%= clothe_path(@clothe,clothe: {selected: !@clothe.selected})%>");
+<% if @clothe.selected %>
+  $("#js-change-selected-link-<%=@clothe.id%>").text("選択を解除する");
+  $("#js-item-<%=@clothe.id%>").css({"filter":"opacity(0.5)","transition-duration": ".6s"});
+<% else %>
+  $("#js-change-selected-link-<%=@clothe.id%>").text("選択する");
+  $("#js-item-<%=@clothe.id%>").css("filter","opacity(1)");
+<%end%>
+
+$("#js-selected-count").text("<%=Clothe.where(selected: true).count%>件選択中です");
