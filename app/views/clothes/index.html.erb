@@ -1,6 +1,5 @@
 <%= render 'shared/nav' %>
 <div class="contents-wrapper">
-  <%= "#{Clothe.where(selected: true).count}件選択中です"%>
   <div class="flex">
     <%= button_to '組み合わせる', root_path , method: :get, 'data-turbolinks': false, class: 'button' %>
     <input type="search">
@@ -23,4 +22,5 @@
         </div> 
   <% end %>
   </div>
+  <p id= "selected_count"></p>
 </div>

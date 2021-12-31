@@ -1,6 +1,6 @@
 class ClothesController < ApplicationController
   def index
-    @clothes = Clothe.all.order(genre: :asc)
+    @clothes = Clothe.all.order(genre: :asc).order(id: :desc)
     @clothes.update(selected: false) # ロード時にすべて選択を外す
   end
 
