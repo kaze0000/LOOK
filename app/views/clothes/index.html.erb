@@ -1,26 +1,28 @@
 <%= render 'shared/nav' %>
 <div class="contents-wrapper">
   <div class="flex">
-    <%= button_to '組み合わせる', root_path , method: :get, 'data-turbolinks': false, class: 'button' %>
-    <input type="search">
+    <%= link_to '組み合わせる', root_path , method: :get, 'data-turbolinks': false, class: 'button' %>
+    <div class="search-forms">
+      <input type="search" placeholder="カテゴリーから探す プルダウン">
+      <input type="search" placeholder="ブランド名から探す">
+    </div>
   </div>
   <div class="items">
     <% @clothes.each do |clothe| %>
-        <div class="item">
+        <div id="js-item-<%=clothe.id%>" class="item opacity">
           <p class="item-img"><%= image_tag clothe.image.url %></p>
-          <div class="item-detail"><%= clothe.brand_name.name %><br><%= clothe.genre %></div>
-          <div class="item-details">
-            <!--
-            <% if clothe.selected %>
-            <%= link_to '選択を解除する', clothe_path(clothe, clothe: {selected: false}), id: "change-selected-false-#{clothe.id}",remote: true,method: :put, class:'button' %>
-            <% else %>
-            <%= link_to '選択する', clothe_path(clothe, clothe: {selected: true}), id: "change-selected-true-#{clothe.id}",remote: true,method: :put, class:'button' %>
-            <% end %>
-            -->
-            <%= link_to '選択する',clothe_path(clothe ,clothe: {selected: !clothe.selected}), class:"button",id: "change-selected-link-#{clothe.id}", remote: true, method: :patch%>
+          <div class="item-detail-wrapper">
+            <div class="item-detail">
+              <div style="font-size:1.4rem"><%= clothe.brand_name.name %></div>
+              <div>#<%= clothe.genre %></div>
+            </div>
+            <div class="item-select-button">
+              <%= link_to '選択する',clothe_path(clothe, clothe: { selected: !clothe.selected }), class: "button",id: "js-change-selected-link-#{clothe.id}", remote: true, method: :patch%>
+            </div>
           </div>
         </div> 
   <% end %>
   </div>
-  <p id= "selected_count"></p>
+  <p id="js-selected-count" class="selected-count"></p>
 </div>
+
