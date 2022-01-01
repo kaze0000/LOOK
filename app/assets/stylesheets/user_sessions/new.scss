@@ -4,8 +4,14 @@
   background-image: url("assets/bg-image.png");
   background-size: cover;
   transform: scale(1, -1);
-  position: relative;
+  // position: relative;
   border-radius: 7px;
+}
+.box-inner-wrapper{
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  height: 600px;
 }
 .box-inner{
   background: rgba(255, 255, 255, 0.8);

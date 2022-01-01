@@ -1,9 +1,11 @@
 <%= render 'shared/nav' %>
 <div class="box-wrapper">
   <div class="box">
-    <div class="box-inner">
-      <p>登録すると、MyClosetが利用できます。</p>
-      <%= render 'form', user: @user %>
+    <div class="box-inner-wrapper">
+      <div class="box-inner">
+        <p>登録すると、<br>MyClosetが利用できます。</p>
+        <%= render 'form', user: @user %>
+      </div>
     </div>
   </div>
 </div>
