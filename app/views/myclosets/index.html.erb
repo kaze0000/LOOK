@@ -1,0 +1,27 @@
+<%= render 'shared/nav' %>
+<div class="contents-wrapper">
+  <div class="flex">
+    <div class="search-forms">
+      <input type="search" placeholder="カテゴリーから探す プルダウン">
+      <input type="search" placeholder="ブランド名から探す">
+    </div>
+  </div>
+  <div class="items">
+    <% @my_clothes.each do |clothe| %>
+      <div id="js-item-<%=clothe.id%>" class="item opacity">
+        <span class="option-button">...</span>
+        <p class="item-img"><%= image_tag clothe.image.url %></p>
+        <div class="item-detail-wrapper">
+          <div class="item-detail">
+            <div style="font-size:1.4rem"><%= clothe.brand_name.name %></div>
+            <div>#<%= clothe.genre %></div>
+          </div>
+          <div class="item-select-button">
+            <%= link_to '選択する',clothe_path(clothe, clothe: { selected: !clothe.selected }), class: "button",id: "js-change-selected-link-#{clothe.id}", remote: true, method: :patch%>
+          </div>
+        </div>
+      </div> 
+    <% end %>
+  </div>
+  <span class="add-button">+</span>
+</div>

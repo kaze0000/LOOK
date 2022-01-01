@@ -1,0 +1,36 @@
+@import "./mixin";
+
+.add-button{
+  font-size: 3rem;
+  position: fixed;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  background-color: #c3c3c35c;
+  border-radius: 50%;
+  bottom: 5%;
+  text-align: center;
+  line-height: 80px;
+  right: 5%;
+}
+.item{
+  position: relative;
+  .option-button{
+    font-size: 3rem;
+    transform: rotate(90deg);
+    position: absolute;
+    display: inline-block;
+    right: 2%;
+    color: rgb(147, 147, 147);
+    @include pc{
+      font-size: 2.4rem;
+    };
+    @include tab{
+      font-size: 2.2rem;
+    };
+    @include sp{
+      font-size: 2rem;
+    };
+  }
+}
+
