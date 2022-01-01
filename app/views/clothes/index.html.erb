@@ -1,12 +1,12 @@
 <%= render 'shared/nav' %>
 <div class="contents-wrapper">
   <div class="flex">
-    <%= link_to '組み合わせる', root_path , method: :get, 'data-turbolinks': false, class: 'button' %>
     <div class="search-forms">
       <input type="search" placeholder="カテゴリーから探す プルダウン">
       <input type="search" placeholder="ブランド名から探す">
     </div>
   </div>
+  <div><%= link_to '選択した服を組み合わせる', root_path , method: :get, 'data-turbolinks': false, class: 'button'%></div>
   <div class="items">
     <% @clothes.each do |clothe| %>
         <div id="js-item-<%=clothe.id%>" class="item opacity">
@@ -21,8 +21,9 @@
             </div>
           </div>
         </div> 
-  <% end %>
+    <% end %>
   </div>
   <p id="js-selected-count" class="selected-count"></p>
+  <%= paginate @clothes %>
 </div>
 
