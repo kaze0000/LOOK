@@ -1,0 +1,13 @@
+<%= form_with model: brand_name, url: myclosets_path ,local: true do |f| %>
+    <div class="form-group">
+      <%= f.text_field :name,class: 'input-form', placeholder: 'ブランド名を入力してください'%>
+    </div>
+  <%= f.fields_for :clothes do |i| %>
+    <div class="form-group">
+      <%= i.select :genre, options_for_select(Clothe.genres.keys), class: 'input-form', include_blank: "カテゴリーを選択してください"%>
+      <%= i.file_field :image, class: 'input-form', accept: 'image/*'%>
+      <%= i.hidden_field :user_id, value: current_user.id %>
+    </div>
+  <% end %>
+  <%= f.submit '登録する',class: 'button' %>
+<% end %>

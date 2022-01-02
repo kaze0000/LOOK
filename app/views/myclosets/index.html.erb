@@ -1,5 +1,6 @@
 <%= render 'shared/nav' %>
 <div class="contents-wrapper">
+<div><%= link_to '選択した服を組み合わせる', root_path , method: :get, 'data-turbolinks': false, class: 'button'%></div>
   <div class="flex">
     <div class="search-forms">
       <input type="search" placeholder="カテゴリーから探す プルダウン">
@@ -10,7 +11,9 @@
     <% @my_clothes.each do |clothe| %>
       <div id="js-item-<%=clothe.id%>" class="item opacity">
         <span class="option-button">...</span>
-        <p class="item-img"><%= image_tag clothe.image.url %></p>
+        <% if clothe.image.url%>
+          <p class="item-img"><%= image_tag clothe.image.url %></p>
+        <% end %>
         <div class="item-detail-wrapper">
           <div class="item-detail">
             <div style="font-size:1.4rem"><%= clothe.brand_name.name %></div>
@@ -23,5 +26,25 @@
       </div> 
     <% end %>
   </div>
-  <span class="add-button">+</span>
 </div>
+<span class="add-button js-modal-open">+</span>
+<div class="modal js-modal">
+    <div class="modal-bg js-modal-close"></div>
+    <div class="modal-content">
+        <p>登録した画像はMyClosetに保存されます。</p>
+        <%= render 'form', {brand_name: @brand_name, clothes: @clothe} %>
+        <a class="js-modal-close mt5" href="">閉じる</a>
+    </div>
+</div>
+<script>
+$(function(){
+    $(".js-modal-open").on('click',function(){
+        $('.js-modal').fadeIn();
+        return false;
+    });
+    $(".js-modal-close").on('click',function(){
+        $('.js-modal').fadeOut();
+        return false;
+    });
+});
+</script>

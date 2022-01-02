@@ -151,3 +151,38 @@ nav{
   background-color: white !important;
 }
 
+
+
+.content{
+  margin: 0 auto;
+  padding: 40px;
+}
+.modal{
+  display: none;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.modal-bg{
+  background: rgba(0,0,0,0.3);
+  height: 100vh;
+  position: absolute;
+  width: 100%;
+}
+.modal-content{
+  background: rgba(255, 255, 255, 0.8);
+  left: 50%;
+  padding: 15% 2%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 98%;
+  max-width: 400px;
+  border-radius: 7px;
+}
+.mt5{
+  margin-top: 5%;
+  display: block;
+}
