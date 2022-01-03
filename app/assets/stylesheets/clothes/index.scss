@@ -17,8 +17,9 @@
     margin-bottom: 4%;
     position: relative;
     .item-img{
-      height: 400px;
+      height: 300px;
       overflow: overlay;
+      text-align: center;
       @include pc{
         height: 300px;
       };
