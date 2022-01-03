@@ -56,3 +56,17 @@
   display: block;
 }
 
+.edit-modal{
+  display: none;
+  height: 100%;
+  width: 100%;
+  .edit-modal-bg{
+    background: rgba(0, 0, 0, 0.3);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+  .modal-content{
+    height: 90%;
+  }
+}

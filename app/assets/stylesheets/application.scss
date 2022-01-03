@@ -12,31 +12,33 @@ img{
 }
 body{
   font-family: sans-serif;
-  color:rgb(13, 13, 13);
+  color:rgb(3, 3, 3);
+  background-color: #dfdfdf21;
 }
 input, button, select, textarea {
   -webkit-appearance: none;
 }
 .webkit{
   -webkit-appearance: none;
-  }
+}
 a{
   color: #333;
   text-decoration: none;
 }
-
 p{
   font-size: 1.4rem;
   color: #333;
 }
-
+.active{
+  display: block;
+}
 .wrapper{
   width: 98%;
   margin: 0 auto;
   max-width: 1280px;
 }
 .contents-wrapper{
-  width: 90%;
+  width: 98%;
   margin: 0 auto;
 }
 ul{

@@ -1,12 +1,16 @@
 class MyclosetsController < ApplicationController
-  require 'base64'
-
   before_action :require_login
   def index
     @my_clothes = current_user.clothes
-    @my_clothes.update(selected: false) # ロード時にすべて選択を外す
+    # ロード時にすべて選択を外す
+    @my_clothes.update(selected: false)
+    # 以下で、new 処理のためのインスタンス作成
     @brand_name = BrandName.new
     @clothes = @brand_name.clothes.build
+  end
+
+  def edit
+    @clothe = Clothe.find(params[:id])
   end
 
   def create

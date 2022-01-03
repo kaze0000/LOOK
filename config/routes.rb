@@ -6,7 +6,5 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[new create]
   resources :clothes, only: %i[index update]
-  # resources :myclosets, only: %i[index]
-  get 'myclosets', to: 'myclosets#index'
-  post 'myclosets', to: 'myclosets#create'
+  resources :myclosets, only: %i[index create show edit destroy]
 end

@@ -9,8 +9,34 @@
   </div>
   <div class="items">
     <% @my_clothes.each do |clothe| %>
-      <div id="js-item-<%=clothe.id%>" class="item opacity">
-        <span class="option-button">...</span>
+      <div id="js-item-<%= clothe.id %>" class="item opacity">
+        <span class="option-button js-edit-modal-open-<%=clothe.id%>"><%= link_to '...', edit_mycloset_path(clothe.id), remote: true %></span>
+        <div class="edit-modal js-edit-modal-<%=clothe.id%>">
+          <div class="edit-modal-bg js-edit-modal-close-<%=clothe.id%>"></div>
+          <div class="modal-content">
+            <ul class="option-list">
+              <li>編集</li>
+              <li>削除</li>
+            </ul>
+            <a class="js-edit-modal-close-<%=clothe.id%>" href="">閉じる</a>
+          </div>
+        </div>
+        <%# <span class="option-button">...</span> %>
+        <%# <div class="option-toggle">
+          <ul class="opption-list">
+            <li>編集</li>
+            <li>削除</li>
+          </ul>
+        </div> %>
+        <%# <div>
+          <span class="option-button">...</span>
+          <div class="option-toggle">
+            <ul class="opption-list">
+              <li>編集</li>
+              <li>削除</li>
+            </ul>
+          </div>
+        </div> %>
         <% if clothe.image.url%>
           <p class="item-img"><%= image_tag clothe.image.url %></p>
         <% end %>
@@ -26,6 +52,8 @@
       </div> 
     <% end %>
   </div>
+  <p id="js-selected-count" class="selected-count"></p>
+  <%# <%= paginate @my_clothes %> 
 </div>
 <span class="add-button js-modal-open">+</span>
 <div class="modal js-modal">
@@ -38,6 +66,7 @@
 </div>
 <script>
 $(function(){
+  // modal
     $(".js-modal-open").on('click',function(){
         $('.js-modal').fadeIn();
         return false;
