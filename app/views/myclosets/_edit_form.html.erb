@@ -1,0 +1,21 @@
+<%= form_with model: brand_name , url: mycloset_path(clothe), local: false,method: :patch do |f| %>
+  <div class="form-group">
+    <%= f.text_field :name,class: 'input-form', placeholder: clothe.brand_name.name%>
+  </div>
+  <%= f.fields_for :clothe do |i| %>
+    <div class="form-group">
+      <%= i.select :genre, options_for_select(Clothe.genres.keys), {include_blank: "#{clothe.genre}"}, {class: "select-form", onchange:"changeColor(this)"} %>
+    </div>
+  <% end %>
+  <%= f.submit '更新する',class: 'button' %>
+<% end %>
+<script>
+// セレクトボックスのoption選択時の色
+function changeColor(option){
+  if( option.value == 0 ){
+      option.style.color = '';
+  }else{
+      option.style.color = '#333';
+  }
+}
+</script>

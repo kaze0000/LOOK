@@ -2,7 +2,7 @@
     <div class="form-group">
       <%= f.text_field :name,class: 'input-form', placeholder: 'ブランド名を入力してください'%>
     </div>
-  <%= f.fields_for :clothes do |i| %>
+  <%= f.fields_for :clothe do |i| %>
     <div class="form-group">
       <%= i.select :genre, options_for_select(Clothe.genres.keys), {include_blank: "カテゴリーを選択してください"}, {class: "select-form", onchange:"changeColor(this)"} %>
     </div>

@@ -36,23 +36,23 @@
     };
   }
 }
-.option-list{
-  border: 1px solid #c4c4c4;
-  border-radius: 3px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  display: none;
-  max-width: 200px;
-  padding: 0;
-  position: absolute;
-  right: 5%;
-  top: 10%;
-  width: 100%;
-  li{
-    background-color: #fff;
-    padding: 2%;
-    max-width: 200px;
-    &:not(:last-child){
-      border-bottom: 1px solid #837d7dbf;
-    }
-  }
-}
+// .option-list{
+//   border: 1px solid #c4c4c4;
+//   border-radius: 3px;
+//   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+//   display: none;
+//   max-width: 200px;
+//   padding: 0;
+//   position: absolute;
+//   right: 5%;
+//   top: 10%;
+//   width: 100%;
+//   li{
+//     background-color: #fff;
+//     padding: 2%;
+//     max-width: 200px;
+//     &:not(:last-child){
+//       border-bottom: 1px solid #837d7dbf;
+//     }
+//   }
+// }

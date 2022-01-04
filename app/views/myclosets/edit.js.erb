@@ -6,3 +6,4 @@ $(".js-edit-modal-close-<%=@clothe.id%>").on('click',function(){
     $('.js-edit-modal-<%=@clothe.id%>').fadeOut();
     return false;
 });
+$('.modal-content-<%=@clothe.id%>').prepend('<%=j(render 'edit_form', {brand_name: @clothe.brand_name, clothe: @clothe})%>');

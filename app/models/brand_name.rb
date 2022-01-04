@@ -1,5 +1,5 @@
 class BrandName < ApplicationRecord
-  has_many :clothes, dependent: :destroy
-  accepts_nested_attributes_for :clothes, allow_destroy: true
+  has_one :clothe, dependent: :destroy
+  accepts_nested_attributes_for :clothe, allow_destroy: true
   validates :name, presence: true
 end

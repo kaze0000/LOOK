@@ -1,16 +1,17 @@
 class MyclosetsController < ApplicationController
-  before_action :require_login
+  # before_action :require_login
   def index
     @my_clothes = current_user.clothes
     # ロード時にすべて選択を外す
     @my_clothes.update(selected: false)
     # 以下で、new 処理のためのインスタンス作成
     @brand_name = BrandName.new
-    @clothes = @brand_name.clothes.build
+    @clothe = @brand_name.build_clothe
   end
 
   def edit
     @clothe = Clothe.find(params[:id])
+    @brand_name = @clothe.brand_name
   end
 
   def create
@@ -34,10 +35,24 @@ class MyclosetsController < ApplicationController
     end
   end
 
+  def update
+    @clothe = Clothe.find(params[:id])
+    @brand_name = @clothe.brand_name
+    @brand_name.update(update_brand_name_params)
+  end
+
+  def destroy
+    @clothe = Clothe.find(params[:id])
+    @clothe.destroy!
+  end
+
   private
 
   def brand_name_params
-    params.require(:brand_name).permit(:name, clothes_attributes:[:genre, :user_id, :image])
+    params.require(:brand_name).permit(:name, clothe_attributes:[:genre, :user_id, :image])
   end
 
+  def update_brand_name_params
+    params.require(:brand_name).permit(:id,:name,clothe_attributes:[:id, :genre])
+  end
 end
