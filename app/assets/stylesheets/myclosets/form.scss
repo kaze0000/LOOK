@@ -69,5 +69,16 @@
   }
   .modal-content{
     height: 90%;
+    padding: 25% 2%;
+  }
+  .button{
+    @include tab{
+      max-width: 100px;
+    }
+    @include sp{
+      max-width: 70px;
+      font-size: 1rem;
+      height: 20px;
+    }
   }
 }

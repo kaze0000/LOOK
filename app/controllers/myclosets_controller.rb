@@ -24,9 +24,9 @@ class MyclosetsController < ApplicationController
       #   # decoded = Base64.decode64(encoded)
       #   # ->ファイル名に日本語が入るとうまくデコードされない
         
-      #   result = RemoveBg.from_file("public/#{clothe.image.url}")
+      #   result = RemoveBg.from_file("public/#{clothe.image.url}") これと
       #   # result = RemoveBg.from_file(Base64.decode64("public/#{decode}}"))
-      #   result.save("public/#{clothe.image.url}", overwrite: true) 
+      #   result.save("public/#{clothe.image.url}", overwrite: true) これでうまくいく　日本語でも大丈夫だったっけ？
       # end
       redirect_to myclosets_path
     else

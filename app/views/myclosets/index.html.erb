@@ -19,8 +19,8 @@
         <div class="edit-modal js-edit-modal-<%=clothe.id%>">
           <div class="edit-modal-bg js-edit-modal-close-<%=clothe.id%>"></div>
           <div class="modal-content-<%=clothe.id%> modal-content">
-            <%=render 'edit_form', {brand_name: clothe.brand_name, clothe: clothe}%>;
-            <a class="js-edit-modal-close-<%=clothe.id%>" href="">閉じる</a>
+            <%=render 'edit_form', {brand_name: clothe.brand_name, clothe: clothe}%>
+            <a class="js-edit-modal-close-<%=clothe.id%> mt5" href="">閉じる</a>
           </div>
         </div>
         <% if clothe.image.url%>
@@ -62,7 +62,4 @@ $(function(){
         return false;
     });
 });
-
-
-
 </script>
