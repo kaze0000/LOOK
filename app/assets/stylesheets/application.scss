@@ -1,6 +1,7 @@
 @import "top";
 @import "user_sessions/*";
 @import "clothes/*";
+@import "myclosets/*";
 // 基本設定
 html{
   font-size: 62.5%;
@@ -11,25 +12,33 @@ img{
 }
 body{
   font-family: sans-serif;
-  color:rgb(13, 13, 13);
+  color:rgb(3, 3, 3);
+  background-color: #dfdfdf21;
 }
-
+input, button, select, textarea {
+  -webkit-appearance: none;
+}
+.webkit{
+  -webkit-appearance: none;
+}
 a{
-  color: #000;
+  color: #333;
   text-decoration: none;
 }
-
 p{
   font-size: 1.4rem;
+  color: #333;
 }
-
+.active{
+  display: block;
+}
 .wrapper{
   width: 98%;
   margin: 0 auto;
   max-width: 1280px;
 }
 .contents-wrapper{
-  width: 90%;
+  width: 98%;
   margin: 0 auto;
 }
 ul{
@@ -56,6 +65,14 @@ ul{
   height: 30px;
   max-width: 320px;
   margin: 2% 0 6% 0;
+  border-radius: 5px;
+  border: 1px solid #9a9a9a;
+}
+.search-forms{
+  input{
+    border-radius: 5px;
+    border: 1px solid #9a9a9a;
+  }
 }
 // header
 .header-inner{
@@ -95,7 +112,7 @@ nav{
   width: 100%;
   border-bottom: 1px solid rgba(168, 168, 168, 0.389);
   // max-width: 1000px;
-  margin: 0 auto;
+  margin: 0 auto; 
   ul li{
     font-size: 1.6rem;
     width: 75px;
@@ -105,6 +122,19 @@ nav{
       position: absolute;
     }
   }
+}
+#a{
+  font-size: 3rem;
+  position: fixed;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  background-color: #c3c3c35c;
+  border-radius: 50%;
+  bottom: 5%;
+  text-align: center;
+  line-height: 80px;
+  right: 5%;
 }
 .pagination{
   display: flex;
@@ -135,4 +165,3 @@ nav{
 .gap{
   background-color: white !important;
 }
-

@@ -33,6 +33,11 @@ module LOOK
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Don't generate system test files.
+    RemoveBg.configure do |config|
+      config.api_key = "aAkhyRYydZNQDSevPdWmLNHr"
+      config.image_processor = :minimagick
+    end
+
     config.generators.system_tests = nil
 
     config.generators do |g|
