@@ -42,4 +42,4 @@ README〜ER図作成：12/31 〆切
 https://www.figma.com/file/zZJsJyUjjlwYso0Krk0j2p/Untitled?node-id=58%3A2
 
 ## ER図
-https://i.gyazo.com/ae717f1635501a9350f455b0a0811052.png
+https://i.gyazo.com/82919bcc0aa783fb8c3816929b6b7271.png
