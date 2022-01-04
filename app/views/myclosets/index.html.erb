@@ -1,6 +1,5 @@
 <%= render 'shared/nav' %>
 <div class="contents-wrapper">
-<div><%= link_to '選択した服を組み合わせる', root_path , method: :get, 'data-turbolinks': false, class: 'button'%></div>
   <div class="flex">
     <div class="search-forms">
       <input type="search" placeholder="カテゴリーから探す プルダウン">
@@ -39,8 +38,14 @@
     <% end %>
   </div>
   <p id="js-selected-count" class="selected-count"></p>
-  <%# <%= paginate @my_clothes %> 
+  <%= paginate @my_clothes %>
 </div>
+
+<div class="outfit-button">
+  <span><%= link_to root_path , 'data-turbolinks': false do %><%=image_tag "clothes.png"%><% end %></span>
+</div>
+  <!--<div class="outfit-button"><%= link_to '選択した服を組み合わせる', root_path , method: :get, 'data-turbolinks': false, class: 'button'%></div>-->
+
 <span class="add-button js-modal-open">+</span>
 <div class="modal js-modal">
     <div class="modal-bg js-modal-close"></div>

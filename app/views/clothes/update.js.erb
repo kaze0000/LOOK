@@ -8,3 +8,9 @@ $("#js-change-selected-link-<%=@clothe.id%>").attr("href", "<%= clothe_path(@clo
 <%end%>
 
 $("#js-selected-count").text("<%=Clothe.where(selected: true).count%>件選択中です");
+
+<% if Clothe.where(selected: true).count > 0 %>
+$(".outfit-button").css("opacity","1");
+<% else %>
+$(".outfit-button").css("opacity","0.3")
+<% end %>
