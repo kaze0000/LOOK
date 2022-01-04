@@ -1,5 +1,5 @@
 class MyclosetsController < ApplicationController
-  # before_action :require_login
+  before_action :require_login
   def index
     @my_clothes = current_user.clothes
     # ロード時にすべて選択を外す

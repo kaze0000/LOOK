@@ -10,36 +10,17 @@
   <div class="items">
     <% @my_clothes.each do |clothe| %>
       <div id="js-item-<%= clothe.id %>" class="item opacity">
+        <%= link_to mycloset_path(clothe.id), method: :delete, remote: true, data: {confirm: "この服を削除しますか？"} do %>
+          <i class="fas fa-trash"></i>
+        <% end %>
         <span class="option-button js-edit-modal-open-<%=clothe.id%>">
         <%= link_to '...', edit_mycloset_path(clothe), remote: true %>
         </span>
-        <%# 以下のspanがqiita記事 %>
-        
         <div class="edit-modal js-edit-modal-<%=clothe.id%>">
           <div class="edit-modal-bg js-edit-modal-close-<%=clothe.id%>"></div>
           <div class="modal-content-<%=clothe.id%> modal-content">
-            <%# modal-contentの中身 %>
-          
-            <%# qiita記事 %>
-            <!--<div id="js-clothe-<%= clothe.id %>">
-              <p id="js-clothe-label-<%= clothe.id %>"></p>
-              <p id="js-clothe-post-error-<%= clothe.id %>" class="text-danger"></p>
-              <textarea style="display: none;" id="js-textarea-clothe-<%= clothe.id %>" class="form-control clothe-post-error"><%= clothe.brand_name.name %></textarea>
-              <div id="js-clothe-button-<%= clothe.id %>" style="display: none;">
-                <button data-cancel-id=<%= clothe.id %> type="button" class="btn btn-light clothe-cancel-button">キャンセル</button>
-                <button data-update-id=<%= clothe.id%> type="submit" class="btn btn-success clothe-update-button">更新</button>
-              </div>
-            </div>-->
-            <%# // %>
-
-             <%# <%= render 'edit_form', {brand_name: clothe.brand_name, clothes: clothe} %>
-
-            
-            <%# <%= link_to '更新する', mycloset_path(clothe.id), class:'button',method: :put %>
-            <%= link_to '削除する', mycloset_path(clothe.id), class:'button', method: :delete, remote: true %>
+            <%=render 'edit_form', {brand_name: clothe.brand_name, clothe: clothe}%>;
             <a class="js-edit-modal-close-<%=clothe.id%>" href="">閉じる</a>
-
-
           </div>
         </div>
         <% if clothe.image.url%>

@@ -36,6 +36,18 @@
     };
   }
 }
+.fa-trash{
+  position: absolute;
+  font-size: 2rem;
+  top: 4%;
+  left: 4%;
+  @include tab{
+    font-size: 1.5rem;
+  };
+  @include sp{
+    font-size: 1rem;
+  };
+}
 // .option-list{
 //   border: 1px solid #c4c4c4;
 //   border-radius: 3px;
