@@ -1,11 +1,11 @@
 // @import 'font-awesome-sprockets';
 // @import 'font-awesome';
 @import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "./mixin";
 @import "top";
 @import "user_sessions/*";
 @import "clothes/*";
 @import "myclosets/*";
-@import "./mixin";
 // 基本設定
 html{
   font-size: 62.5%;
@@ -47,6 +47,7 @@ p{
 }
 ul{
   list-style: none;
+  padding: 0;
 }
 
 .flex{
@@ -111,6 +112,14 @@ ul{
 footer{
   margin-top: 4%;
   border-top: 1px solid rgba(168, 168, 168, 0.389);
+  .wrapper{
+    ul{
+      @include sp{
+        text-align: center;
+        display: block;
+      }
+    }
+  }
 }
 // nav
 nav{
