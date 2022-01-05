@@ -1,5 +1,6 @@
 $('.js-edit-modal-<%=@clothe.id%>').fadeIn();
 $(".js-edit-modal-close-<%=@clothe.id%>").on('click',function(){
     $('.js-edit-modal-<%=@clothe.id%>').fadeOut();
+    return false;
 });
 

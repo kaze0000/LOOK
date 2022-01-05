@@ -5,7 +5,6 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  margin: 3% 0;
   &::after{
     content:"";
     display: block;
@@ -55,6 +54,4 @@
   background-color: #0000009c;
   color: #fff;
 }
-.search-forms{
-  margin: 0 0 0 auto;
-}
+
