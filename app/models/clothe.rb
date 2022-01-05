@@ -5,4 +5,6 @@ class Clothe < ApplicationRecord
 
   enum genre: { tops: 0, outer: 1, bottoms: 2 }
   enum gender: { mens: 0, womens: 1 }
+
+  validates :genre, presence: true
 end
