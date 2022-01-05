@@ -154,11 +154,18 @@ nav{
     flex-basis: 30%;
   }
   span{
+    display: inline-block;
+    line-height: 40px;
     max-width: 40px;
     width: 100%;
-    display: inline-block;
     @include sp{
       max-width: 30px;
+    }
+    &:hover{
+      background: #5b5b5b21;
+    }
+    a{
+      display: block;
     }
   }
 }
