@@ -112,6 +112,8 @@ GEM
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     ffi (1.15.4)
+    font-awesome-sass (5.11.2)
+      sassc (>= 1.11)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.8.11)
@@ -325,6 +327,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   carrierwave
+  font-awesome-sass
   jbuilder (~> 2.7)
   kaminari
   listen (~> 3.3)

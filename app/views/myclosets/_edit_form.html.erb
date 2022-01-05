@@ -4,7 +4,7 @@
   </div>
   <%= f.fields_for :clothe do |i| %>
     <div class="form-group">
-      <%= i.select :genre, options_for_select(Clothe.genres.keys), {include_blank: "#{clothe.genre}"}, {class: "select-form", onchange:"changeColor(this)"} %>
+      <%= i.select :genre, options_for_select(Clothe.genres.keys), {include_blank: "カテゴリーを選択してください"}, {class: "select-form", onchange:"changeColor(this)"} %>
     </div>
   <% end %>
   <%= f.submit '更新する',class: 'button' %>
