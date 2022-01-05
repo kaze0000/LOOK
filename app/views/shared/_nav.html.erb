@@ -1,9 +1,9 @@
 <nav>
   <div class="wrapper">
     <ul class="flex">
-      <li><%= link_to 'Men', clothes_path(gender: 0) %></li>
-      <li><%= link_to 'Women', clothes_path(gender: 1) %></li>
-      <li><%= link_to 'MyCloset', myclosets_path %></li>
+      <li class="<%= 'current-nav' if current_page?(clothes_path(gender: 0)) %>"><%= link_to 'Men', clothes_path(gender: 0) %></li>
+      <li class="<%= 'current-nav' if current_page?(clothes_path(gender: 1)) %>"><%= link_to 'Women', clothes_path(gender: 1) %></li>
+      <li class="<%= 'current-nav' if current_page?(myclosets_path)%>"><%= link_to 'MyCloset', myclosets_path %></li>
     </ul>
   </div>
 </nav>

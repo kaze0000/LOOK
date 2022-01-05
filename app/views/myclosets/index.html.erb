@@ -38,8 +38,9 @@
     <% end %>
   </div>
   <p id="js-selected-count" class="selected-count"></p>
-  <%= paginate @my_clothes %>
 </div>
+
+<%= paginate @my_clothes %>
 
 <div class="outfit-button">
   <%= link_to root_path , 'data-turbolinks': false, data: {confirm: "選択した服を組み合わせますか？"} do %><%=image_tag "clothes.png"%><% end %>
@@ -65,5 +66,12 @@ $(function(){
         $('.js-modal').fadeOut();
         return false;
     });
+});
+$(document).ready(function(){
+  var items_height = $(".items").height();
+  var view_height = $(window).height();
+  if (items_height < 0.7 * view_height){
+    $(".footer").addClass("footer-position-bottom")
+  };
 });
 </script>
