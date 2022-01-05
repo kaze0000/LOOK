@@ -6,24 +6,58 @@
       <input type="search" placeholder="ブランド名から探す">
     </div>
   </div>
-  <div><%= link_to '選択した服を組み合わせる', root_path , method: :get, 'data-turbolinks': false, class: 'button'%></div>
   <div class="items">
     <% @clothes.each do |clothe| %>
-        <div id="js-item-<%=clothe.id%>" class="item opacity">
-          <p class="item-img"><%= image_tag clothe.image.url %></p>
-          <div class="item-detail-wrapper">
-            <div class="item-detail">
-              <div style="font-size:1.4rem"><%= clothe.brand_name.name %></div>
-              <div>#<%= clothe.genre %></div>
-            </div>
-            <div class="item-select-button">
-              <%= link_to '選択する',clothe_path(clothe, clothe: { selected: !clothe.selected }), class: "button",id: "js-change-selected-link-#{clothe.id}", remote: true, method: :patch%>
-            </div>
+      <div id="js-item-<%= clothe.id %>" class="item opacity">
+        <div class="edit-modal js-edit-modal-<%=clothe.id%>">
+          <div class="edit-modal-bg js-edit-modal-close-<%=clothe.id%>"></div>
+          <div class="modal-content-<%=clothe.id%> modal-content">
+            
+            <a class="js-edit-modal-close-<%=clothe.id%> mt5" href="">閉じる</a>
           </div>
-        </div> 
+        </div>
+        <% if clothe.image.url%>
+          <p class="item-img"><%= image_tag clothe.image.url %></p>
+        <% end %>
+        <div class="item-detail-wrapper">
+          <div class="item-detail">
+            <div style="font-size:1.4rem" id="brand-name-<%=clothe.id%>"><%= clothe.brand_name.name %></div>
+            <div id="genre-<%=clothe.id%>">#<%= clothe.genre %></div>
+          </div>
+          <div class="item-select-button">
+            <%= link_to '選択する',clothe_path(clothe, clothe: { selected: !clothe.selected }), class: "button",id: "js-change-selected-link-#{clothe.id}", remote: true, method: :patch%>
+          </div>
+        </div>
+      </div> 
     <% end %>
   </div>
   <p id="js-selected-count" class="selected-count"></p>
-  <%= paginate @clothes %>
 </div>
 
+<%= paginate @clothes %>
+
+<div class="outfit-button">
+  <%= link_to root_path , 'data-turbolinks': false, data: {confirm: "選択した服を組み合わせますか？"} do %><%=image_tag "clothes.png"%><% end %>
+</div>
+
+<script>
+$(function(){
+  // modal
+    $(".js-modal-open").on('click',function(){
+        $('.js-modal').fadeIn();
+        return false;
+    });
+    $(".js-modal-close").on('click',function(){
+        $('.js-modal').fadeOut();
+        return false;
+    });
+});
+  // items要素が70vhより小さければfooternをbottom:0に設置
+$(document).ready(function(){
+  var items_height = $(".items").height();
+  var view_height = $(window).height();
+  if (items_height < 0.7 * view_height){
+    $(".footer").addClass("footer-position")
+  };
+});
+</script>
