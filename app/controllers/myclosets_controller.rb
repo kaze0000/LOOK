@@ -1,7 +1,7 @@
 class MyclosetsController < ApplicationController
   before_action :require_login
   def index
-    @my_clothes = current_user.clothes.page(params[:page]).per(9)
+    @my_clothes = current_user.clothes.page(params[:page])
     # ロード時にすべて選択を外す
     @my_clothes.update(selected: false)
     # 以下で、new 処理のためのインスタンス作成
