@@ -33,9 +33,6 @@ p{
   font-size: 1.4rem;
   color: #333;
 }
-.active{
-  display: block;
-}
 .wrapper{
   width: 98%;
   margin: 0 auto;
@@ -49,7 +46,6 @@ ul{
   list-style: none;
   padding: 0;
 }
-
 .flex{
   display: flex;
   justify-content: space-around;
@@ -79,6 +75,13 @@ ul{
     border-radius: 5px;
     border: 1px solid #9a9a9a;
   }
+}
+// toggleClass
+.active{
+  display: block;
+}
+.black{
+  color: #333;
 }
 // header
 .header-inner{
@@ -137,13 +140,20 @@ nav{
     font-size: 1.6rem;
     width: 75px;
     text-align: center;
-    color: rgb(170, 170, 170);
+    a{
+      color: rgb(170, 170, 170);
+    }
     &:nth-child(2){
       position: absolute;
     }
   }
+  .current-nav{
+    a{
+      color: #333;
+    }
+  }
 }
-// pagenation
+// pagination
 .pagination{
   border-top: 1px solid #d2d2d2;
   padding: 1% 0;
