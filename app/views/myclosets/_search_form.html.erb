@@ -1,0 +1,5 @@
+<%= search_form_for @q, url: url do |f| %>
+<%= f.search_field :brand_name_name_cont, placeholder: 'ブランド名で検索' %>
+<%= f.select :genre_eq, Clothe.genres, include_blank: 'カテゴリーで検索' %>
+<%= f.submit %>
+<% end %>

@@ -1,0 +1,7 @@
+$('.js-modal').fadeIn();
+$(".js-modal-close").on('click',function(){
+    $('.js-modal').fadeOut();
+    return false;
+});
+
+$('#target').after('<%= j(render 'create_form', {brand_name: @brand_name, clothe: @clothe}) %>');

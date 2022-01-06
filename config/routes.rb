@@ -6,5 +6,9 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[new create]
   resources :clothes, only: %i[index update]
-  resources :myclosets
+  resources :myclosets do
+    collection do
+      get 'search'
+    end
+  end
 end

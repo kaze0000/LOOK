@@ -5,11 +5,11 @@
       <%= render 'search_form', url: search_myclosets_path %>
     </div>
   </div>
-  <%= render 'items', clothes: @my_clothes %>
+  <%= render 'items', clothes: @results %>
   <p id="js-selected-count" class="selected-count"></p>
 </div>
 
-<%= paginate @my_clothes %>
+<%= paginate @results %>
 
 <%= render 'add_button' %>
 
