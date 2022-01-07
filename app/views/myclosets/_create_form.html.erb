@@ -1,4 +1,5 @@
-<%= form_with model: brand_name, url: myclosets_path ,local: true do |f| %>
+<p>登録した画像はMyClosetに保存されます。</p>
+<%= form_with model: brand_name, url: myclosets_path ,local: true , id:"create-form" do |f| %>
     <div class="form-group">
       <%= f.text_field :name,class: 'input-form', placeholder: 'ブランド名を入力してください'%>
     </div>
@@ -13,6 +14,7 @@
   <% end %>
   <%= f.submit '登録する',class: 'button' %>
 <% end %>
+<a class="js-modal-close mt5">閉じる</a>
 <script>
 // セレクトボックスのoption選択時の色
 function changeColor(option){

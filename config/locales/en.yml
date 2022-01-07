@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+  enums:
+    clothe:
+      genre:
+        tops: "tops"
+        outer: "outer"
+        bottoms: "bottoms"

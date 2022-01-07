@@ -1,19 +1,25 @@
 <%= render 'shared/nav' %>
 <div class="contents-wrapper">
-  <div class="flex">
-    <div class="search-forms">
-      <%= render 'search_form', url: search_myclosets_path %>
-    </div>
+  <div class="search-result">
+    <% if @results.present? %>
+      <p><%= "#{@results.count}件見つかりました。" %></p>
+      <%= link_to  'mycloset一覧に戻る',myclosets_path %>
+    <% else %>
+      <p>検索結果が見つかりませんでした。</p>
+      <%= link_to  'mycloset一覧に戻る',myclosets_path %>
+    <% end %>
   </div>
   <%= render 'items', clothes: @results %>
+
+  <% if Clothe.where(selected: true).count > 0 %>
+  <p id="js-selected-count-prev" class="selected-count"><%= "#{Clothe.where(selected: true).count}件選択中です" %></p>
+  <% end %>
   <p id="js-selected-count" class="selected-count"></p>
 </div>
 
-<%= paginate @results %>
-
 <%= render 'add_button' %>
 
-<div class="outfit-button">
+<div class="outfit-button <%= "opacity1" if Clothe.where(selected: true).count > 0 %>">
   <%= link_to root_path , 'data-turbolinks': false, data: {confirm: "選択した服を組み合わせますか？"} do %><%=image_tag "clothes.png"%><% end %>
 </div>
 

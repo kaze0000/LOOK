@@ -31,6 +31,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Login
 gem 'sorcery' 
 
+# enum
+gem 'enum_help'
+
 # Image Upload
 gem 'carrierwave'
 

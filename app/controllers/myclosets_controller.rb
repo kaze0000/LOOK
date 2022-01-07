@@ -1,10 +1,15 @@
 class MyclosetsController < ApplicationController
   before_action :require_login
+  # before_action :reset, only: [:index]
   before_action :set_q, only: [:index, :search]
   def index
-    @my_clothes = current_user.clothes.page(params[:page])
+    @my_clothes = current_user.clothes.where(admin_clothe:false).order(created_at: :desc).page(params[:page])
     # ロード時にすべて選択を外す
-    @my_clothes.update(selected: false)
+    # @my_clothes.update(selected: false)
+  end
+
+  def reset
+    current_user.clothes.update(selected: false)
   end
 
   def new
@@ -50,8 +55,12 @@ class MyclosetsController < ApplicationController
   end
 
   def search
-    @results = @q.result.where(user_id: current_user.id, admin_clothe: false).page(params[:page])
+    # @results = @q.result.where(user_id: current_user.id, admin_clothe: false).page(params[:page])
+    @results = @q.result.where(user_id: current_user.id, admin_clothe: false)
+    # binding.irb
   end
+
+  def modal; end
 
   private
 
