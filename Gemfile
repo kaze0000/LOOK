@@ -31,6 +31,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Login
 gem 'sorcery' 
 
+# enum
+gem 'enum_help'
+
 # Image Upload
 gem 'carrierwave'
 
@@ -45,6 +48,9 @@ gem 'mini_magick'
 
 # icon
 gem 'font-awesome-sass'
+
+# search-form
+gem 'ransack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

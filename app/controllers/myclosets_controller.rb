@@ -1,10 +1,18 @@
 class MyclosetsController < ApplicationController
   before_action :require_login
+  # before_action :reset, only: [:index]
+  before_action :set_q, only: [:index, :search]
   def index
-    @my_clothes = current_user.clothes.page(params[:page])
+    @my_clothes = current_user.clothes.where(admin_clothe:false).order(created_at: :desc).page(params[:page])
     # ロード時にすべて選択を外す
-    @my_clothes.update(selected: false)
-    # 以下で、new 処理のためのインスタンス作成
+    # @my_clothes.update(selected: false)
+  end
+
+  def reset
+    current_user.clothes.update(selected: false)
+  end
+
+  def new
     @brand_name = BrandName.new
     @clothe = @brand_name.build_clothe
   end
@@ -46,7 +54,19 @@ class MyclosetsController < ApplicationController
     @clothe.destroy!
   end
 
+  def search
+    # @results = @q.result.where(user_id: current_user.id, admin_clothe: false).page(params[:page])
+    @results = @q.result.where(user_id: current_user.id, admin_clothe: false)
+    # binding.irb
+  end
+
+  def modal; end
+
   private
+
+  def set_q
+    @q = Clothe.ransack(params[:q])
+  end
 
   def brand_name_params
     params.require(:brand_name).permit(:name, clothe_attributes:[:genre, :user_id, :image])

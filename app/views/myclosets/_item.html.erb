@@ -1,0 +1,33 @@
+<div id="js-item-<%= clothe.id %>" class="item opacity <%= "opacity-half" if clothe.selected === true %>">
+  <%= link_to mycloset_path(clothe.id), method: :delete, remote: true, data: {confirm: "この服を削除しますか？"} do %>
+    <i class="fas fa-trash"></i>
+  <% end %>
+  <span class="option-button js-edit-modal-open-<%=clothe.id%>">
+  <%= link_to '...', edit_mycloset_path(clothe), remote: true %>
+  </span>
+  <div class="edit-modal js-edit-modal-<%=clothe.id%>">
+    <div class="edit-modal-bg js-edit-modal-close-<%=clothe.id%>"></div>
+    <div class="modal-content-<%=clothe.id%> modal-content">
+      <%=render 'update_form', {brand_name: clothe.brand_name, clothe: clothe}%>
+      <a class="js-edit-modal-close-<%=clothe.id%> mt5" href="">閉じる</a>
+    </div>
+  </div>
+  <% if clothe.image.url%>
+    <p class="item-img"><%= image_tag clothe.image.url %></p>
+  <% end %>
+  <div class="item-detail-wrapper">
+    <div class="item-detail">
+      <div style="font-size:1.4rem" id="brand-name-<%=clothe.id%>"><%= clothe.brand_name.name %></div>
+      <div id="genre-<%=clothe.id%>">#<%= clothe.genre %></div>
+    </div>
+    <div class="item-select-button">
+      <% if clothe.selected === true %>
+        <%= link_to '選択を解除する',clothe_path(clothe, clothe: { selected: !clothe.selected }),
+        class: "button",id: "js-change-selected-link-#{clothe.id}", remote: true, method: :patch %>
+      <% else %>
+        <%= link_to '選択する',clothe_path(clothe, clothe: { selected: !clothe.selected }), class: "button",id: "js-change-selected-link-#{clothe.id}", remote: true, method: :patch%>
+      <% end %>
+    </div>
+  </div>
+</div>
+

@@ -1,22 +1,26 @@
 <%= render 'shared/nav' %>
-
-<%= render 'modal', type: "search" %>
-
 <div class="contents-wrapper">
+  <div class="search-result">
+    <% if @results.present? %>
+      <p><%= "#{@results.count}件見つかりました。" %></p>
+      <%= link_to  'mycloset一覧に戻る',myclosets_path %>
+    <% else %>
+      <p>検索結果が見つかりませんでした。</p>
+      <%= link_to  'mycloset一覧に戻る',myclosets_path %>
+    <% end %>
+  </div>
+  <%= render 'items', clothes: @results %>
+
   <% if Clothe.where(selected: true).count > 0 %>
   <p id="js-selected-count-prev" class="selected-count"><%= "#{Clothe.where(selected: true).count}件選択中です" %></p>
   <% end %>
   <p id="js-selected-count" class="selected-count"></p>
- 
-  <%= render 'items', clothes: @my_clothes %>
-  <%= paginate @my_clothes %>
 </div>
 
-<%= link_to '+', new_mycloset_path, remote: true, class:"add-button js-create-modal-open" %>
-<%= render 'modal', type: 'create' %>
+<%= render 'add_button' %>
 
 <div class="outfit-button <%= "opacity1" if Clothe.where(selected: true).count > 0 %>">
-  <%= link_to root_path , 'data-turbolinks': false, data: {confirm: "選択した服を組み合わせますか？" } do %><%=image_tag "clothes.png"%><% end %>
+  <%= link_to root_path , 'data-turbolinks': false, data: {confirm: "選択した服を組み合わせますか？"} do %><%=image_tag "clothes.png"%><% end %>
 </div>
 
 <script>
