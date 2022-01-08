@@ -3,7 +3,7 @@ class ClothesController < ApplicationController
     # @clothes = Clothe.all.where(user_id: 2).order(genre: :asc).order(id: :desc).page(params[:page]).per(3) 
     @clothes = Clothe.where(admin_clothe: true, gender: 0).page(params[:page]) if params[:gender] === "0"
     @clothes = Clothe.where(admin_clothe: true, gender: 1).page(params[:page]) if params[:gender] === "1"
-    @clothes.update(selected: false) # ロード時にすべて選択を外す
+    # @clothes.update(selected: false) # ロード時にすべて選択を外す
   end
 
   # def update

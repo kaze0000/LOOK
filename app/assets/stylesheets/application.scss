@@ -114,6 +114,13 @@ ul{
 footer{
   margin-top: 4%;
   border-top: 1px solid rgba(168, 168, 168, 0.389);
+  padding: 5% 0;
+  @include tab{
+    padding: 15% 0;
+  }
+  @include sp{
+    padding: 10% 0;
+  }
   .wrapper{
     ul{
       @include sp{
