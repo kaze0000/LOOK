@@ -1,4 +1,9 @@
 <div id="js-item-<%= clothe.id %>" class="item <%= "opacity-half" if clothe.selected === true %>">
+  <div class="set-clothe-button"> 
+    <%= link_to set_clothe_path(clothe.id), method: :post do %>
+      <%= image_tag "hanger.png" %>
+    <% end %>
+  </div>
   <% if clothe.image.url%>
     <p class="item-img"><%= image_tag clothe.image.url %></p>
   <% end %>
@@ -7,18 +12,5 @@
       <div style="font-size:1.4rem" id="brand-name-<%=clothe.id%>"><%= clothe.brand_name.name %></div>
       <div id="genre-<%=clothe.id%>">#<%= clothe.genre %></div>
     </div>
-    <div class="item-select-button">
-    
-      <%= link_to 'myclosetに入れる', download_clothe_path(clothe.id) ,method: :post %>
-    
-      
-      <% if clothe.selected === true %>
-        <%= link_to '選択を解除する',select_mycloset_path(clothe, clothe: { selected: !clothe.selected }),
-        class: "button",id: "js-change-selected-link-#{clothe.id}", remote: true %>
-      <% else %>
-        <%= link_to '選択する',select_mycloset_path(clothe, clothe: { selected: !clothe.selected }), class: "button",id: "js-change-selected-link-#{clothe.id}", remote: true %>
-      <% end %>
-    </div>
   </div>
 </div>
-
