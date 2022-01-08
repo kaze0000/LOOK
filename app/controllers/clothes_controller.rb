@@ -20,14 +20,4 @@ class ClothesController < ApplicationController
     #   redirect_to clothes_path, notice: 'Error occurs'
     # end
   # end
-  def update
-    @clothe = Clothe.find(params[:id])
-    @clothe.update(clothe_params)
-  end
-
-  private
-
-  def clothe_params
-    params.require(:clothe).permit(:selected)
-  end
 end
