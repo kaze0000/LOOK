@@ -1,10 +1,10 @@
-$("#js-change-selected-link-<%=@clothe.id%>").attr("href", "<%= clothe_path(@clothe,clothe: {selected: !@clothe.selected})%>");
+$("#js-change-selected-link-<%=@clothe.id%>").attr("href", "<%= select_mycloset_path(@clothe,clothe: {selected: !@clothe.selected})%>");
 <% if @clothe.selected %>
   $("#js-change-selected-link-<%=@clothe.id%>").text("選択を解除する");
-  $("#js-item-<%=@clothe.id%>").css({"filter":"opacity(0.5)","transition-duration": ".6s"});
+  $("#js-item-<%=@clothe.id%>").addClass("opacity-half");
 <% else %>
   $("#js-change-selected-link-<%=@clothe.id%>").text("選択する");
-  $("#js-item-<%=@clothe.id%>").css("filter","opacity(1)");
+  $("#js-item-<%=@clothe.id%>").removeClass("opacity-half");
 <%end%>
 
 <%# ページロードしても取得件数が表示されるようにしているので、選択するを押したときにそれとかぶらないように削除 %>

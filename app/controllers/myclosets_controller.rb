@@ -8,10 +8,6 @@ class MyclosetsController < ApplicationController
     # @my_clothes.update(selected: false)
   end
 
-  def reset
-    current_user.clothes.update(selected: false)
-  end
-
   def new
     @brand_name = BrandName.new
     @clothe = @brand_name.build_clothe
@@ -60,12 +56,19 @@ class MyclosetsController < ApplicationController
     # binding.irb
   end
 
-  def modal; end
-
+  def select
+    @clothe = Clothe.find(params[:id])
+    @clothe.update(select_params)
+  end
+  
   private
-
+  
   def set_q
     @q = Clothe.ransack(params[:q])
+  end
+  
+  def select_params
+    params.require(:clothe).permit(:selected)
   end
 
   def brand_name_params
