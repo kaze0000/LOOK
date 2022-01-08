@@ -1,12 +1,16 @@
-<%= form_with model: user, local: true do |f| %>
+<%= form_with model: user, local: true, id: 'user-new-form' do |f| %>
+  <p>登録すると、<br>MyClosetが利用できます。</p>
   <div class="form-group">
-    <%= f.text_field :name,class: 'input-form', placeholder: 'ユーザー名を入力してください'%>
+    <%= f.label :name, 'ユーザー名を入力してください。' %>
+    <%= f.text_field :name,class: 'input-form' %>
   </div>
   <div class="form-group">
-    <%= f.text_field :email,class: 'input-form', placeholder: 'メールアドレスを入力してください'%>
+    <%= f.label :email, 'メールアドレスを入力してください。' %>
+    <%= f.text_field :email,class: 'input-form' %>
   </div>
   <div class="form-group">
-    <%= f.text_field :password,class: 'input-form', placeholder: 'パスワードを入力してください'%>
+    <%= f.label :password, 'パスワードを入力してください。' %>
+    <%= f.text_field :password,class: 'input-form' %>
   </div>
   <%= f.submit '登録する',class: 'button' %>
 <% end %>

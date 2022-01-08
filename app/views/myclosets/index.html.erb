@@ -14,7 +14,6 @@
 
 <%= link_to '+', new_mycloset_path, remote: true, class:"add-button js-create-modal-open" %>
 <%= render 'modal', type: 'create' %>
-
 <div class="outfit-button <%= "opacity1" if Clothe.where(selected: true).count > 0 %>">
   <%= link_to root_path , 'data-turbolinks': false, data: {confirm: "選択した服を組み合わせますか？" } do %><%=image_tag "clothes.png"%><% end %>
 </div>
