@@ -3,9 +3,7 @@ class MyclosetsController < ApplicationController
   # before_action :reset, only: [:index]
   before_action :set_q, only: [:index, :search]
   def index
-    @my_clothes = current_user.clothes.where(admin_clothe:false).order(created_at: :desc).page(params[:page])
-    # ロード時にすべて選択を外す
-    # @my_clothes.update(selected: false)
+    @my_clothes = current_user.clothes.order(created_at: :desc).page(params[:page])
   end
 
   def new
@@ -16,7 +14,6 @@ class MyclosetsController < ApplicationController
   def create
     @brand_name = BrandName.new(brand_name_params)
     if @brand_name.save
-      
       # # 背景削除の処理（開発中はコメントアウト、一人1回/月にしたい）
       # @brand_name.clothes.each do |clothe|
       #   # encoded = Base64.encode64(clothe.image_identifier)
@@ -51,9 +48,7 @@ class MyclosetsController < ApplicationController
   end
 
   def search
-    # @results = @q.result.where(user_id: current_user.id, admin_clothe: false).page(params[:page])
     @results = @q.result.where(user_id: current_user.id, admin_clothe: false)
-    # binding.irb
   end
 
   def select
