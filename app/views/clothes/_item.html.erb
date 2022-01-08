@@ -8,6 +8,10 @@
       <div id="genre-<%=clothe.id%>">#<%= clothe.genre %></div>
     </div>
     <div class="item-select-button">
+    
+      <%= link_to 'myclosetに入れる', download_clothe_path(clothe.id) ,method: :post %>
+    
+      
       <% if clothe.selected === true %>
         <%= link_to '選択を解除する',select_mycloset_path(clothe, clothe: { selected: !clothe.selected }),
         class: "button",id: "js-change-selected-link-#{clothe.id}", remote: true %>
