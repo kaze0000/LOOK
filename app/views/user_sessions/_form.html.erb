@@ -1,0 +1,17 @@
+<%= form_with url: login_path, local: true do |f| %>
+  <p>ログインすると、<br>MyClosetに自分の服が登録できます。</p>
+  <div class="form-group">
+    <%= f.label :email, 'メールアドレスを入力してください' %>
+    <%= f.text_field :email,class: 'input-form' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password, 'パスワードを入力してください' %>
+    <%= f.text_field :password,class: 'input-form' %>
+  </div>
+  <%= f.submit 'ログインする',class: 'button' %>
+  <p>
+    <%= link_to new_user_path do %>
+      初めてのご利用の方はこちら<br>（新規会員登録)
+    <%end%>
+  </p>
+<% end %>
