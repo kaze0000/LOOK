@@ -5,5 +5,5 @@ $(".js-create-modal-close").on('click',function(){
 });
 
 if (!$('#create-form').length){
-$('.js-create-modal-content').prepend('<%= j(render 'create_form', {brand_name: @brand_name, clothe: @clothe})%>');
+$('.js-create-modal-content').prepend('<%= j(render 'create_form', { brand_name: @brand_name, clothe: @clothe })%>');
 }

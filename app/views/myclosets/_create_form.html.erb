@@ -1,26 +1,19 @@
 <p>登録した画像はMyClosetに保存されます。</p>
 <%= form_with model: brand_name, url: myclosets_path ,local: true , id:"create-form" do |f| %>
     <div class="form-group">
-      <%= f.text_field :name,class: 'input-form', placeholder: 'ブランド名を入力してください'%>
+      <%= f.label :name, 'ブランド名を入力してください。'%>
+      <%= f.text_field :name,class: 'input-form' %>
     </div>
   <%= f.fields_for :clothe do |i| %>
     <div class="form-group">
-      <%= i.select :genre, options_for_select(Clothe.genres.keys), {include_blank: "カテゴリーを選択してください"}, {class: "select-form", onchange:"changeColor(this)"} %>
+      <%= i.label :genre, 'カテゴリーを選択してください。' %>
+      <%= i.select :genre, options_for_select(Clothe.genres.keys), {include_blank: ''}, {class: "select-form", onchange:"changeColor(this)"} %>
     </div>
     <div class="form-group">
+      <%= i.label :image, '服の画像をアップロードしてください。'%>
       <%= i.file_field :image, class: 'image-form', accept: 'image/*'%>
     </div>
       <%= i.hidden_field :user_id, value: current_user.id %>
   <% end %>
   <%= f.submit '登録する',class: 'button' %>
 <% end %>
-<script>
-// セレクトボックスのoption選択時の色
-function changeColor(option){
-  if( option.value == 0 ){
-      option.style.color = '';
-  }else{
-      option.style.color = '#333';
-  }
-}
-</script>

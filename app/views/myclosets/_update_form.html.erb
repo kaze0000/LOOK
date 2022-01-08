@@ -12,13 +12,3 @@
   <%= f.submit '更新する',class: 'button' %>
   <a class="js-edit-modal-close-<%=clothe.id%> mt5" href="">閉じる</a>
 <% end %>
-<script>
-// セレクトボックスのoption選択時の色
-function changeColor(option){
-  if( option.value == 0 ){
-      option.style.color = '';
-  }else{
-      option.style.color = '#333';
-  }
-}
-</script>

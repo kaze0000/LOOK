@@ -3,10 +3,12 @@ label{
   font-size: 1.2rem;
 }
 .input-form,.select-form{
+  color: #333;
+  display: block;
   width: 100%;
   height: 30px;
   max-width: 320px;
-  margin: 2% 0 6% 0;
+  margin: 2% auto 6%;
   border-radius: 5px;
   border: 1px solid #9a9a9a;
   font-size: 1.6rem;
@@ -20,7 +22,7 @@ label{
   height: 30px;
   max-width: 320px;
   color: #8d8d8d;
-  margin: 2% 0 6% 0;
+  margin: 2% auto 6%;
 }
 
 // 検索フォーム
