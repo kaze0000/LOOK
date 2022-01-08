@@ -1,13 +1,16 @@
-<%= form_with model: brand_name , url: mycloset_path(clothe), local: false,method: :patch do |f| %>
+<%= form_with model: brand_name , url: mycloset_path(clothe), local: false, method: :patch, id:'update-form' do |f| %>
   <div class="form-group">
+    <%= f.label :name, 'ブランド名を入力'%>
     <%= f.text_field :name,class: 'input-form', placeholder: clothe.brand_name.name%>
   </div>
   <%= f.fields_for :clothe do |i| %>
     <div class="form-group">
-      <%= i.select :genre, options_for_select(Clothe.genres.keys), {include_blank: "カテゴリーを選択してください"}, {class: "select-form", onchange:"changeColor(this)"} %>
+      <%= i.label :genre, 'カテゴリーを選択'%>
+      <%= i.select :genre, options_for_select(Clothe.genres.keys), { include_blank: clothe.genre }, { class: "select-form", onchange: "changeColor(this)" } %>
     </div>
   <% end %>
   <%= f.submit '更新する',class: 'button' %>
+  <a class="js-edit-modal-close-<%=clothe.id%> mt5" href="">閉じる</a>
 <% end %>
 <script>
 // セレクトボックスのoption選択時の色

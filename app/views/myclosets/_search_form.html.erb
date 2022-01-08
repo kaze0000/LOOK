@@ -4,4 +4,3 @@
 <%= f.select :genre_eq, Clothe.genres.map{|k,v|[Clothe.genres_i18n[k],v]}, {include_blank: 'カテゴリーで検索'}, {class:'select-form'} %>
 <%= f.submit '検索する', class:'button' %>
 <% end %>
-<a class="js-search-modal-close mt5">閉じる</a>
