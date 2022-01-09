@@ -1,13 +1,18 @@
 class MyclosetsController < ApplicationController
   before_action :require_login
-  before_action :set_q, only: [:index, :search]
+  before_action :set_q, only: [:search]
   def index
     @my_clothes = current_user.clothes.includes(:brand_name).order(created_at: :desc).page(params[:page])
+    @selected_count = Clothe.where(selected: true, user_id: current_user.id).count
   end
 
   def new
-    @brand_name = BrandName.new
-    @clothe = @brand_name.build_clothe
+    if !current_user.guest?
+      @brand_name = BrandName.new
+      @clothe = @brand_name.build_clothe
+    else
+      @message = '本ログインで、持っている服を追加できます。'
+    end
   end
   
   def create
@@ -53,6 +58,7 @@ class MyclosetsController < ApplicationController
   def select
     @clothe = Clothe.find(params[:id])
     @clothe.update(select_params)
+    @selected_count = Clothe.where(selected: true, user_id: current_user.id).count
   end
   
   private
