@@ -10,13 +10,17 @@ $("#js-change-selected-link-<%=@clothe.id%>").attr("href", "<%= select_mycloset_
 <%# ページロードしても取得件数が表示されるようにしているので、選択するを押したときにそれとかぶらないように削除 %>
 $("#js-selected-count-prev").css("display","none");
 <%# 0件選択中です　とならないように。%>
-<% if @selected_count === 0 %>
+<% if Clothe.where(selected: true).count === 0 %>
 <%# 消す %>
 $("#js-selected-count").css("display","none");
-$(".outfit-button").css("opacity","0.3")
 <% else %>
 <%# ０件にならないならば出現させる %>
 $("#js-selected-count").css("display","block");
-$("#js-selected-count").text("<%= @selected_count %>件選択中です");
+$("#js-selected-count").text("<%=Clothe.where(selected: true).count%>件選択中です");
+<% end %>
+
+<% if Clothe.where(selected: true).count > 0 %>
 $(".outfit-button").css("opacity","1");
+<% else %>
+$(".outfit-button").css("opacity","0.3")
 <% end %>
