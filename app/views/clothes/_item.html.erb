@@ -1,9 +1,13 @@
 <div id="js-item-<%= clothe.id %>" class="item <%= "opacity-half" if clothe.selected === true %>">
-  <div class="set-clothe-button"> 
-    <%= link_to set_clothe_path(clothe.id), method: :post do %>
-      <%= image_tag "hanger.png" %>
-    <% end %>
-  </div>
+    <div class="set-clothe-button"> 
+      <% if logged_in? %>
+        <%= link_to set_clothe_path(clothe.id), method: :post do %>
+          <%= image_tag "hanger.png" %>
+        <% end %>
+      <% else %>
+        <a><%= image_tag "hanger.png" %></a>
+      <% end %>
+    </div>
   <% if clothe.image.url%>
     <p class="item-img"><%= image_tag clothe.image.url %></p>
   <% end %>

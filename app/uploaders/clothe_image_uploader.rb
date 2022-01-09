@@ -2,7 +2,7 @@ class ClotheImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  process resize_and_pad: [300, 300, "#ffffff", "Center"]
+  process resize_and_pad: [300, 300, "rgba(255,255,255,0)", "Center"]
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog

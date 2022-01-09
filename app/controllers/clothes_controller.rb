@@ -1,9 +1,10 @@
 class ClothesController < ApplicationController
   before_action :set_q, only: [:search]
+  skip_before_action :require_login
 
   def index
-    @clothes = Clothe.joins(:user).where(user: {role: 1}, gender: 0).page(params[:page]) if params[:gender] === "0"
-    @clothes = Clothe.joins(:user).where(user: {role: 1}, gender: 1).page(params[:page]) if params[:gender] === "1"
+    @clothes = Clothe.includes(:brand_name).joins(:user).where(user: {role: 1}, gender: 0).order(created_at: :desc).page(params[:page]) if params[:gender] === "0"
+    @clothes = Clothe.includes(:brand_name).joins(:user).where(user: {role: 1}, gender: 1).order(created_at: :desc).page(params[:page]) if params[:gender] === "1"
   end
 
   def set
