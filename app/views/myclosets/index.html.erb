@@ -10,18 +10,15 @@
   <%= render 'items', clothes: @my_clothes %>
   <%= paginate @my_clothes %>
 </div>
-<%= link_to '+', new_mycloset_path, remote: true, class:"add-button js-create-modal-open" %>
+
+<% if current_user.guest? %>
+  <a class="pre-add-button">+<span>本ログインで、持っている服を追加できます。</span></a>
+<% else %>
+  <%= link_to '+', new_mycloset_path, remote: true, class:"add-button js-create-modal-open" %>
+<% end %>
+</div>
+
 <%= render 'modal', type: 'create' %>
 <div class="outfit-button <%= "opacity" if @selected_count > 0 %>">
   <%= link_to root_path , 'data-turbolinks': false, data: {confirm: "選択した服を組み合わせますか？" } do %><%=image_tag "clothes.png"%><% end %>
 </div>
-
-<script>
-// $(document).ready(function(){
-//   var items_height = $(".items").height();
-//   var view_height = $(window).height();
-//   if (items_height < 0.7 * view_height){
-//     $(".footer").addClass("footer-position-bottom")
-//   };
-// });
-</script>
