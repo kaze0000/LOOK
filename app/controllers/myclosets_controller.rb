@@ -3,6 +3,7 @@ class MyclosetsController < ApplicationController
   before_action :set_q, only: [:index, :search]
   def index
     @my_clothes = current_user.clothes.includes(:brand_name).order(created_at: :desc).page(params[:page])
+    @selected_count = Clothe.where(selected: true, user_id: current_user.id).count
   end
 
   def new
@@ -53,6 +54,7 @@ class MyclosetsController < ApplicationController
   def select
     @clothe = Clothe.find(params[:id])
     @clothe.update(select_params)
+    @selected_count = Clothe.where(selected: true, user_id: current_user.id).count
   end
   
   private
