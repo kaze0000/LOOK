@@ -1,9 +1,9 @@
 class ClothesController < ApplicationController
-  before_action :set_q, only: [:index, :search]
+  before_action :set_q, only: [:search]
 
   def index
-    @clothes = Clothe.joins(:user).where(user: {role: 0}, gender: 0).page(params[:page]) if params[:gender] === "0"
-    @clothes = Clothe.joins(:user).where(user: {role: 0}, gender: 1).page(params[:page]) if params[:gender] === "1"
+    @clothes = Clothe.joins(:user).where(user: {role: 1}, gender: 0).page(params[:page]) if params[:gender] === "0"
+    @clothes = Clothe.joins(:user).where(user: {role: 1}, gender: 1).page(params[:page]) if params[:gender] === "1"
   end
 
   def set
@@ -18,13 +18,13 @@ class ClothesController < ApplicationController
 
   def search
     # @results = @q.result.where(admin_clothe: true)
-    @results = @q.result.includes(:brand_name).joins(:user).where(user: {role:0})
+    @results = @q.result
   end
 
   private
   
   def set_q
-    @q = Clothe.ransack(params[:q])
+    @q = Clothe.includes(:brand_name).joins(:user).where(user: {role:1}).ransack(params[:q])
   end
 
 end

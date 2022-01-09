@@ -47,7 +47,7 @@ class MyclosetsController < ApplicationController
   end
 
   def search
-    @results = @q.result.includes(:brand_name).where(user_id: current_user.id, admin_clothe: false)
+    @results = @q.result.includes(:brand_name).joins(:user).where(user_id: current_user.id, user: {role: 0})
   end
 
   def select
