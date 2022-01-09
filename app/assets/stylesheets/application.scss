@@ -114,7 +114,7 @@ ul{
 footer{
   margin-top: 4%;
   border-top: 1px solid rgba(168, 168, 168, 0.389);
-  padding: 5% 0;
+  padding: 2% 0;
   @include tab{
     padding: 15% 0;
   }
@@ -159,9 +159,17 @@ nav{
   }
 }
 // pagination
+
 .pagination{
   border-top: 1px solid #d2d2d2;
   padding: 1% 0;
+  .page-numbers{
+    span{
+      @include sp{
+        max-width: 20px;
+      }
+    }
+  }
   .current{
     color: #008CFF;
   }

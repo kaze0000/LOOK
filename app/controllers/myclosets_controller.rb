@@ -1,9 +1,8 @@
 class MyclosetsController < ApplicationController
   before_action :require_login
-  # before_action :reset, only: [:index]
   before_action :set_q, only: [:index, :search]
   def index
-    @my_clothes = current_user.clothes.order(created_at: :desc).page(params[:page])
+    @my_clothes = current_user.clothes.includes(:brand_name).order(created_at: :desc).page(params[:page])
   end
 
   def new
@@ -48,7 +47,7 @@ class MyclosetsController < ApplicationController
   end
 
   def search
-    @results = @q.result.where(user_id: current_user.id, admin_clothe: false)
+    @results = @q.result.includes(:brand_name).joins(:user).where(user_id: current_user.id, user: {role: 0})
   end
 
   def select

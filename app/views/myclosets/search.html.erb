@@ -7,7 +7,7 @@
     <% else %>
       <p>検索結果が見つかりませんでした。</p>
     <% end %>
-    <%= link_to  'mycloset一覧に戻る',myclosets_path %>
+    <%= link_to  'MyClosetに戻る',myclosets_path %>
   </div>
   <%= render 'items', clothes: @results %>
 
@@ -24,11 +24,11 @@
 </div>
 
 <script>
-$(document).ready(function(){
-  var items_height = $(".items").height();
-  var view_height = $(window).height();
-  if (items_height < 0.7 * view_height){
-    $(".footer").addClass("footer-position-bottom")
-  };
-});
+// $(document).ready(function(){
+//   var items_height = $(".items").height();
+//   var view_height = $(window).height();
+//   if (items_height < 0.7 * view_height){
+//     $(".footer").addClass("footer-position-bottom")
+//   };
+// });
 </script>

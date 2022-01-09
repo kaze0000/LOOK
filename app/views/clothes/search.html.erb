@@ -1,0 +1,23 @@
+<%= render 'shared/nav' %>
+<%= render 'myclosets/modal', type: "search" %>
+<div class="contents-wrapper">
+  <div class="search-result">
+    <% if @results.present? %>
+      <p><%= "#{@results.count} 件見つかりました。" %></p>
+    <% else %>
+      <p>検索結果が見つかりませんでした。</p>
+    <% end %>
+    <%= link_to '洋服一覧に戻る', request.referer %>
+  </div>
+  <%= render 'items', clothes: @results %>
+</div>
+
+<script>
+$(document).ready(function(){
+  var items_height = $(".items").height();
+  var view_height = $(window).height();
+  if (items_height < 0.7 * view_height){
+    $(".footer").addClass("footer-position-bottom")
+  };
+});
+</script>
