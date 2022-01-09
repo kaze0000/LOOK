@@ -1,4 +1,6 @@
 class UserSessionsController < ApplicationController
+  skip_before_action :require_login, only: %i[new create guest_login]
+
   def new; end
 
   def create
@@ -22,6 +24,6 @@ class UserSessionsController < ApplicationController
       password: 'password'
     )
     auto_login(@guest_user)
-    redirect_to root_path
+    redirect_to request.referer 
   end
 end

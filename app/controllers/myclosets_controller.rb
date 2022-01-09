@@ -1,5 +1,4 @@
 class MyclosetsController < ApplicationController
-  before_action :require_login
   before_action :set_q, only: [:search]
   def index
     @my_clothes = current_user.clothes.includes(:brand_name).order(created_at: :desc).page(params[:page])
@@ -7,12 +6,8 @@ class MyclosetsController < ApplicationController
   end
 
   def new
-    if !current_user.guest?
-      @brand_name = BrandName.new
-      @clothe = @brand_name.build_clothe
-    else
-      @message = '本ログインで、持っている服を追加できます。'
-    end
+    @brand_name = BrandName.new
+    @clothe = @brand_name.build_clothe
   end
   
   def create
