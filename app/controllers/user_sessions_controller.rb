@@ -24,6 +24,6 @@ class UserSessionsController < ApplicationController
       password: 'password'
     )
     auto_login(@guest_user)
-    redirect_to request.referer 
+    redirect_to myclosets_path
   end
 end

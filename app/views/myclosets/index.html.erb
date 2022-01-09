@@ -3,10 +3,11 @@
 <div class="contents-wrapper">
   <% if current_user %>
     <% if @selected_count > 0 %>
-    <p id="js-selected-count-prev" class="selected-count"><%= "#{@selected_count}件選択中です" %></p>
+      <p id="js-selected-count-prev" class="selected-count"><%= "#{@selected_count}件選択中です" %></p>
     <% end %>
     <p id="js-selected-count" class="selected-count"></p>
   <% end %>
+  <p style="text-align:center;"><%= '現在登録している服はありません。' if !@my_clothes.present?%></p>
   <%= render 'items', clothes: @my_clothes %>
   <%= paginate @my_clothes %>
 </div>
