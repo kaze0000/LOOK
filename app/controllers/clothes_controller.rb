@@ -17,7 +17,6 @@ class ClothesController < ApplicationController
   end
 
   def search
-    # @results = @q.result.where(admin_clothe: true)
     @results = @q.result
   end
 

@@ -10,25 +10,3 @@
   <%= render 'items', clothes: @clothes %>
   <%= paginate @clothes %>
 </div>
-
-<script>
-$(function(){
-  // modal
-    $(".js-modal-open").on('click',function(){
-        $('.js-modal').fadeIn();
-        return false;
-    });
-    $(".js-modal-close").on('click',function(){
-        $('.js-modal').fadeOut();
-        return false;
-    });
-});
-  // items要素が70vhより小さければfooternをbottom:0に設置
-$(document).ready(function(){
-  var items_height = $(".items").height();
-  var view_height = $(window).height();
-  if (items_height < 0.7 * view_height){
-    $(".footer").addClass("footer-position-bottom")
-  };
-});
-</script>

@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_05_060033) do
+ActiveRecord::Schema.define(version: 2021_12_29_055124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "brand_names", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -24,13 +24,12 @@ ActiveRecord::Schema.define(version: 2022_01_05_060033) do
   create_table "clothes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "brand_name_id", null: false
-    t.integer "genre"
+    t.integer "genre", default: 0, null: false
     t.string "image"
-    t.integer "gender"
-    t.boolean "selected"
+    t.integer "gender", default: 0, null: false
+    t.boolean "selected", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "admin_clothe", default: false, null: false
     t.index ["brand_name_id"], name: "index_clothes_on_brand_name_id"
     t.index ["user_id"], name: "index_clothes_on_user_id"
   end
