@@ -64,7 +64,7 @@
 }
 .set-clothe-button{
   background-color: #000000b0;
-  bottom: 15%;
+  top: 2%;
   border-radius: 50%;
   color: #fff;
   height: 60px;
@@ -81,7 +81,7 @@
     line-height: 45px;
   }
   @include sp{
-    bottom: 20%;
+    top:3%;
     height: 30px;
     width: 30px;
     right: 5%;

@@ -2,11 +2,11 @@
 <%= render 'myclosets/modal', type: "search" %>
 <div class="contents-wrapper">
   <% if !logged_in? %>
-      <p class="require-login">利用するには<%= link_to 'ゲストログイン', guest_login_path, method: :post %>、<br>もしくは
-      <%= link_to 'ログイン', login_path %>してください。</p>
+    <p class="require-login">利用するには<%= link_to 'ゲストログイン', guest_login_path, method: :post %>、<br>もしくは
+    <%= link_to 'ログイン', login_path %>してください。</p>
+  <% else %>
+    <p style="text-align: center;">ボタンを押すと、服がMyClosetに追加されます。</p>
   <% end %>
-
-  <%= current_user.email if logged_in? %>
   <%= render 'items', clothes: @clothes %>
   <%= paginate @clothes %>
 </div>

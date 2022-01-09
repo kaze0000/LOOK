@@ -10,6 +10,6 @@ class StaticPagesController < ApplicationController
   end
 
   def reset
-    Clothe.includes(:user).where(selected: true).update(selected: false)
+    Clothe.includes(:user,:brand_name).where(selected: true).update(selected: false)
   end
 end
