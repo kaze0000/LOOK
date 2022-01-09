@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     member do
       post 'set'
     end
+    collection do
+      get 'search'
+    end
   end
   resources :myclosets do
     member do

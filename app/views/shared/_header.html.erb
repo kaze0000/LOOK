@@ -2,13 +2,14 @@
   <div class="header-inner">
   <div class="wrapper">
     <h1><%= link_to 'LOOK', root_path ,'data-turbolinks': false %></h1>
-    <% if current_page?(myclosets_path) || current_page?(search_myclosets_path)%>
+    <% if current_page?(myclosets_path) || current_page?(search_myclosets_path) %>
       <%= link_to search_myclosets_path, remote: true do %>
         <i class="fas fa-search"></i>
       <% end %>
-    <% elsif current_page?(clothes_path) %>
-      
+    <% elsif current_page?(clothes_path) || current_page?(search_clothes_path) %>
+      <%= link_to search_clothes_path, remote: true do %>
         <i class="fas fa-search"></i>
+      <% end %>
     <% end %>
     <div class="no-login">
       <% if current_user %>

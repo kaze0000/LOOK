@@ -1,4 +1,5 @@
 <%= render 'shared/nav' %>
+<%= render 'myclosets/modal', type: "search" %>
 <div class="contents-wrapper">
   <% if !logged_in? %>
       <p class="require-login">利用するには<%= link_to 'ゲストログイン', guest_login_path, method: :post %>、<br>もしくは

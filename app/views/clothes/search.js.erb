@@ -1,0 +1,9 @@
+$('.js-search-modal').fadeIn();
+$(".js-search-modal-close").on('click',function(){
+    $('.js-search-modal').fadeOut();
+    return false;
+});
+
+if (!$('#search-form').length){
+$('.js-search-modal-content').prepend('<%= j(render 'search_form', url: search_clothes_path) %>');
+}
