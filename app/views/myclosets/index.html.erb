@@ -1,5 +1,6 @@
 <%= render 'shared/nav' %>
 <%= render 'modal', type: "search" %>
+<p id="alert"><%= alert %></p>
 <div class="contents-wrapper">
   <% if current_user %>
     <% if @selected_count > 0 %>

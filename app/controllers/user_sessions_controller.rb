@@ -7,7 +7,9 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email],params[:password])
     if @user
       redirect_back_or_to myclosets_path
+      flash[:alert] = 'ようこそ' + @user.name + 'さん'
     else
+      flash.now[:alert] = 'ログインに失敗しました。'
       render :new
     end
   end
@@ -25,5 +27,6 @@ class UserSessionsController < ApplicationController
     )
     auto_login(@guest_user)
     redirect_to myclosets_path
+    flash[:alert] = 'ようこそ' + @guest_user.name + 'さん'
   end
 end

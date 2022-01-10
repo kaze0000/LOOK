@@ -1,4 +1,4 @@
-<p>登録した画像はMyClosetに保存されます。</p>
+<p>登録した画像はMyClosetに保存されます。<br><span style="color: #db0303; font-size: 1rem;">すべて必須項目です。</span></p>
 <%= form_with model: brand_name, url: myclosets_path ,local: true , id:"create-form" do |f| %>
     <div class="form-group">
       <%= f.label :name, 'ブランド名を入力してください。'%>
