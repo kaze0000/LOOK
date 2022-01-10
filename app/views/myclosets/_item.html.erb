@@ -11,9 +11,7 @@
       <%=render 'update_form', {brand_name: clothe.brand_name, clothe: clothe}%>
     </div>
   </div>
-  <% if clothe.image.url%>
-    <p class="item-img"><%= image_tag clothe.image.url %></p>
-  <% end %>
+  <p class="item-img"><%= image_tag clothe.image.url %></p>
   <div class="item-detail-wrapper">
     <div class="item-detail">
       <div style="font-size:1.4rem" id="brand-name-<%=clothe.id%>"><%= clothe.brand_name.name %></div>

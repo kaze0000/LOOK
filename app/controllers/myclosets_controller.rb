@@ -50,6 +50,7 @@ class MyclosetsController < ApplicationController
 
   def search
     @results = @q.result.includes(:brand_name).joins(:user).where(user_id: current_user.id, user: {role: 0})
+    @selected_count = Clothe.where(selected: true, user_id: current_user.id).count
   end
 
   def select

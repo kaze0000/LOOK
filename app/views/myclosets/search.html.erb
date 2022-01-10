@@ -11,24 +11,26 @@
   </div>
   <%= render 'items', clothes: @results %>
 
-  <% if Clothe.where(selected: true).count > 0 %>
-  <p id="js-selected-count-prev" class="selected-count"><%= "#{Clothe.where(selected: true).count}件選択中です" %></p>
+  <% if current_user %>
+    <% if @selected_count > 0 %>
+      <p id="js-selected-count-prev" class="selected-count"><%= "#{@selected_count}件選択中です" %></p>
+    <% end %>
+    <p id="js-selected-count" class="selected-count"></p>
   <% end %>
-  <p id="js-selected-count" class="selected-count"></p>
 </div>
 
-<%= link_to '+', new_mycloset_path, remote: true, class:"add-button js-create-modal-open" %>
+<% if current_user.guest? %>
+  <a class="pre-add-button">+<span>本ログインで、持っている服を追加できます。</span></a>
+<% else %>
+  <%= link_to '+', new_mycloset_path, remote: true, class:"add-button js-create-modal-open" %>
+<% end %>
+
 <%= render 'modal', type: 'create' %>
-<div class="outfit-button <%= "opacity1" if Clothe.where(selected: true).count > 0 %>">
-  <%= link_to root_path , 'data-turbolinks': false, data: { confirm: "選択した服を組み合わせますか？" } do %><%= image_tag "clothes.png" %><% end %>
-</div>
 
-<script>
-// $(document).ready(function(){
-//   var items_height = $(".items").height();
-//   var view_height = $(window).height();
-//   if (items_height < 0.7 * view_height){
-//     $(".footer").addClass("footer-position-bottom")
-//   };
-// });
-</script>
+<div class="outfit-button <%= "bg-gray" if @selected_count > 0 %>">
+  <% if @selected_count > 0 %>
+    <%= link_to root_path , 'data-turbolinks': false, data: {confirm: "選択した服を組み合わせますか？" } do %><%=image_tag "clothes.png"%><% end %>
+  <% else %>
+    <a class="pre-selected"><%=image_tag "clothes.png"%><span>服を選択してください。</span></a>
+  <% end %>
+</div>
