@@ -12,11 +12,13 @@ $("#js-selected-count-prev").css("display","none");
 <%# 0件選択中です　とならないように。%>
 <% if @selected_count === 0 %>
 <%# 消す %>
-$("#js-selected-count").css("display","none");
-$(".outfit-button").css("opacity","0.3")
+  $("#js-selected-count").css("display","none");
+  $(".outfit-button").css("background-color","#d4d4d4")
+  $('.outfit-button').html('<a class="pre-selected"><%=image_tag "clothes.png"%><span>服を選択してください。</span></a>')
 <% else %>
 <%# ０件にならないならば出現させる %>
-$("#js-selected-count").css("display","block");
-$("#js-selected-count").text("<%= @selected_count %>件選択中です");
-$(".outfit-button").css("opacity","1");
+  $("#js-selected-count").css("display","block");
+  $("#js-selected-count").text("<%= @selected_count %>件選択中です");
+  $(".outfit-button").css("background-color","#737373");
+  $('.outfit-button').html('<%= link_to root_path , 'data-turbolinks': false, data: {confirm: "選択した服を組み合わせますか？" } do %><%=image_tag "clothes.png"%><% end %>)')
 <% end %>

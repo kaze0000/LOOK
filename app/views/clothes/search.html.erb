@@ -11,13 +11,3 @@
   </div>
   <%= render 'items', clothes: @results %>
 </div>
-
-<script>
-$(document).ready(function(){
-  var items_height = $(".items").height();
-  var view_height = $(window).height();
-  if (items_height < 0.7 * view_height){
-    $(".footer").addClass("footer-position-bottom")
-  };
-});
-</script>

@@ -7,4 +7,6 @@ class Clothe < ApplicationRecord
   enum gender: { mens: 0, womens: 1 }
 
   validates :genre, presence: true
+  validates :gender, presence: true
+  validates :image, presence: true
 end

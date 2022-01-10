@@ -2,6 +2,7 @@
 <%= render 'modal', type: "search" %>
 <p id="alert"><%= alert %></p>
 <div class="contents-wrapper">
+  <p style="text-align:center;"><%= current_user.name + 'さんのClosetです。' %></p>
   <% if current_user %>
     <% if @selected_count > 0 %>
       <p id="js-selected-count-prev" class="selected-count"><%= "#{@selected_count}件選択中です" %></p>
@@ -20,6 +21,12 @@
 <% end %>
 
 <%= render 'modal', type: 'create' %>
-<div class="outfit-button <%= "opacity" if @selected_count > 0 %>">
-  <%= link_to root_path , 'data-turbolinks': false, data: {confirm: "選択した服を組み合わせますか？" } do %><%=image_tag "clothes.png"%><% end %>
+
+<div class="outfit-button <%= "bg-gray" if @selected_count > 0 %>">
+  <% if @selected_count > 0 %>
+    <%= link_to root_path , 'data-turbolinks': false, data: {confirm: "選択した服を組み合わせますか？" } do %><%=image_tag "clothes.png"%><% end %>
+  <% else %>
+    <a class="pre-selected"><%=image_tag "clothes.png"%><span>服を選択してください。</span></a>
+  <% end %>
 </div>
+
