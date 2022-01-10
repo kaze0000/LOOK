@@ -24,9 +24,11 @@ class MyclosetsController < ApplicationController
       #   result.save("public/#{clothe.image.url}", overwrite: true) これでうまくいく　日本語でも大丈夫だったっけ？
       # end
       redirect_to myclosets_path
+      flash[:alert] = '登録に成功しました。'
     else
       # TODO　else処理を考える　flashかなんか出す？
-      redirect_to clothes_path
+      redirect_to myclosets_path
+      flash[:alert] = '登録に失敗しました。'
     end
   end
   
