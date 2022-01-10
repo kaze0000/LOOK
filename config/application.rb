@@ -34,7 +34,7 @@ module LOOK
 
     # Don't generate system test files.
     RemoveBg.configure do |config|
-      config.api_key = "aAkhyRYydZNQDSevPdWmLNHr"
+      config.api_key = ENV['REMOVE_BG_API_KEY']
       config.image_processor = :minimagick
     end
 
