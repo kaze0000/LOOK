@@ -13,16 +13,11 @@ class MyclosetsController < ApplicationController
   def create
     @brand_name = BrandName.new(brand_name_params)
     if @brand_name.save
-      # # 背景削除の処理（開発中はコメントアウト、一人1回/月にしたい）
-      # @brand_name.clothes.each do |clothe|
-      #   # encoded = Base64.encode64(clothe.image_identifier)
-      #   # decoded = Base64.decode64(encoded)
-      #   # ->ファイル名に日本語が入るとうまくデコードされない
+      # 背景削除の処理（開発中はコメントアウト、一人1回/月にしたい）
+      # clothe = @brand_name.clothe
+      # result = RemoveBg.from_file("public/#{clothe.image.url}")
+      # result.save("public/#{clothe.image.url}", overwrite: true)
       
-      #   result = RemoveBg.from_file("public/#{clothe.image.url}") これと
-      #   # result = RemoveBg.from_file(Base64.decode64("public/#{decode}}"))
-      #   result.save("public/#{clothe.image.url}", overwrite: true) これでうまくいく　日本語でも大丈夫だったっけ？
-      # end
       redirect_to myclosets_path
       flash[:alert] = '登録に成功しました。'
     else
