@@ -20,6 +20,12 @@
 <% end %>
 
 <%= render 'modal', type: 'create' %>
+
 <div class="outfit-button <%= "opacity" if @selected_count > 0 %>">
-  <%= link_to root_path , 'data-turbolinks': false, data: {confirm: "選択した服を組み合わせますか？" } do %><%=image_tag "clothes.png"%><% end %>
+  <% if @selected_count > 0 %>
+    <%= link_to root_path , 'data-turbolinks': false, data: {confirm: "選択した服を組み合わせますか？" } do %><%=image_tag "clothes.png"%><% end %>
+  <% else %>
+    <a class="pre-selected"><%=image_tag "clothes.png"%><span>服を選択してください。</span></a>
+  <% end %>
 </div>
+
