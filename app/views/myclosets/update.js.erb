@@ -1,4 +1,5 @@
-$('#brand-name-<%=@clothe.id%>').text("<%=@brand_name.name%>");
-$('#genre-<%=@clothe.id%>').text("<%=@brand_name.clothe.genre%>");
+$('#brand-name-<%=@clothe.id%>').text("<%= @brand_name.name %>");
+$('#genre-<%=@clothe.id%>').text("<%= '#' + @brand_name.clothe.genre %>");
+$('#gender-<%=@clothe.id%>').text("<%= '#' + @brand_name.clothe.gender %>");
 $('.js-edit-modal-close-<%=@clothe.id%>').click();
 

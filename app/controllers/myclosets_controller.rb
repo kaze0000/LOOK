@@ -12,6 +12,7 @@ class MyclosetsController < ApplicationController
   
   def create
     @brand_name = BrandName.new(brand_name_params)
+    binding.irb
     if @brand_name.save
       # 背景削除の処理（開発中はコメントアウト、一人1回/月にしたい）
       # clothe = @brand_name.clothe
@@ -65,10 +66,10 @@ class MyclosetsController < ApplicationController
   end
 
   def brand_name_params
-    params.require(:brand_name).permit(:name, clothe_attributes:[:genre, :user_id, :image])
+    params.require(:brand_name).permit(:name, clothe_attributes:[:genre, :user_id, :image, :gender])
   end
 
   def update_brand_name_params
-    params.require(:brand_name).permit(:id,:name,clothe_attributes:[:id, :genre])
+    params.require(:brand_name).permit(:id,:name,clothe_attributes:[:id, :genre, :gender])
   end
 end
