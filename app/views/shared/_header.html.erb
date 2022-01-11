@@ -5,13 +5,19 @@
     <% if !logged_in? %>
       <%= link_to 'Guest', guest_login_path, class:'guestlogin', method: :post %>
     <% elsif current_page?(myclosets_path) || current_page?(search_myclosets_path) %>
-      <%= link_to search_myclosets_path, remote: true do %>
-        <i class="fas fa-search"></i>
-      <% end %>
+      <div class="search-form"> 
+        <%= link_to search_myclosets_path, remote: true do %>
+          <i class="fas fa-search"></i>
+          <span>MyClosetから検索</span>  
+        <% end %>
+      </div>
     <% elsif current_page?(clothes_path) || current_page?(search_clothes_path) %>
-      <%= link_to search_clothes_path, remote: true do %>
-        <i class="fas fa-search"></i>
-      <% end %>
+      <div class="search-form"> 
+        <%= link_to search_clothes_path, remote: true do %>
+          <i class="fas fa-search"></i>
+          <span>ShareClosetから検索</span>  
+        <% end %>
+      </div>
     <% end %>
     <div class="no-login">
       <% if current_user %>

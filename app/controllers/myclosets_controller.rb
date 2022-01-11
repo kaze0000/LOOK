@@ -39,12 +39,12 @@ class MyclosetsController < ApplicationController
   end
 
   def destroy
-    @clothe = Clothe.find(params[:id])
-    @clothe.destroy!
+    @clothe = Clothe.includes(:brand_name).find(params[:id])
+    @clothe.brand_name.destroy!
   end
 
   def search
-    @results = @q.result.includes(:brand_name).joins(:user).where(user_id: current_user.id, user: {role: 0})
+    @results = @q.result.includes(:brand_name).joins(:user).where(user_id: current_user.id)
     @selected_count = Clothe.where(selected: true, user_id: current_user.id).count
   end
 

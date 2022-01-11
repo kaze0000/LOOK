@@ -100,12 +100,19 @@ ul{
     transform: translate(0,-35%);
     position: absolute;
   }
-  .fa-search{
+  .search-form{
     font-size: 1.6rem;
     top: 50%;
     left: 5%;
     transform: translate(0,-35%);
     position: absolute;
+    border-bottom: 1px solid rgba(168, 168, 168, 0.548);
+    span{
+      font-size: 1.2rem;
+      @include sp{
+        font-size: 1rem;
+      }
+    }
   }
   .no-login{
     position: absolute;
@@ -155,17 +162,16 @@ footer{
 nav{
   width: 100%;
   border-bottom: 1px solid rgba(168, 168, 168, 0.389);
-  // max-width: 1000px;
   margin: 0 auto; 
+  .flex{
+    justify-content: center;
+  }
   ul li{
     font-size: 1.6rem;
-    width: 75px;
+    flex-basis: 30%;
     text-align: center;
     a{
       color: rgb(170, 170, 170);
-    }
-    &:nth-child(2){
-      position: absolute;
     }
   }
   .current-nav{

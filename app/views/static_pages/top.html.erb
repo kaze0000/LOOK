@@ -22,6 +22,7 @@
   <div class="canvas-wrapper">
     <canvas id="canvas" width="600" height="600"></canvas>
   </div>
+  <span>chromeで画像のダウンロードがうまくいかない場合は、<br>safariを利用してください。</span>
 </div>
 <div class="buttons flex">
   <button class="button" id="download">Download</button>
@@ -36,20 +37,18 @@
     $('#canvas').attr('width', w);
     $('#canvas').attr('height', h);
     // ダウンロード
-    document.getElementById("download").onclick = (event) => {
+    $("#download").on('click',function(){
       let canvas = document.getElementById("canvas");
-
       let link = document.createElement("a");
       link.href = canvas.toDataURL("image/jpg");
-      link.download = "test.jpg";
+      link.download = "outfit.jpg";
       link.click();
-    }
+    });
     // 即時関数。関数を定義すると同時に実行する。
     (function () {
       var canvas = new fabric.Canvas('canvas', {
         // preserveObjectStacking: false
       });
-
       if (JSON.parse(document.getElementById("selected-bottoms-true").dataset.json)){
         N = JSON.parse(document.getElementById("selected-bottoms-count").dataset.json);
         var srcs_bottoms = [];
@@ -83,7 +82,6 @@
       for (var i in srcs_tops) {
         fabric.Image.fromURL(`${srcs_tops[i]}`, function (oImg) {
           tops = oImg;
-          console.log(tops);
           oImg.setControlsVisibility({
             mt: false,	// middle top
             mb: false,	// middle bottom
