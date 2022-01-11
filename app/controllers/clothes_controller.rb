@@ -3,8 +3,7 @@ class ClothesController < ApplicationController
   skip_before_action :require_login
 
   def index
-    @clothes = Clothe.includes(:brand_name).joins(:user).where(user: {role: 1}, gender: 0).order(created_at: :desc).page(params[:page]) if params[:gender] === "0"
-    @clothes = Clothe.includes(:brand_name).joins(:user).where(user: {role: 1}, gender: 1).order(created_at: :desc).page(params[:page]) if params[:gender] === "1"
+    @clothes = Clothe.includes(:brand_name).joins(:user).where(user: {role: 0}).order(created_at: :desc).page(params[:page])
   end
 
   def set

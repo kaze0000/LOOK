@@ -7,7 +7,7 @@
 .items{
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
   flex-wrap: wrap;
   margin-top: 4%;
   &::after{
@@ -63,7 +63,8 @@
   z-index: 100;
 }
 .set-clothe-button{
-  background-color: #000000b0;
+  background-color: #276efb;
+  // background-color: #000000b0;
   top: 2%;
   border-radius: 50%;
   color: #fff;
