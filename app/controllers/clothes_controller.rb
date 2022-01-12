@@ -9,7 +9,7 @@ class ClothesController < ApplicationController
   def set
     clothe = Clothe.find(params[:id])
     set_clothe = BrandName.new(name: clothe.brand_name.name, clothe_attributes: { genre: clothe.genre, user_id: current_user.id, image: clothe.image })
-    if  set_clothe.save
+    if set_clothe.save
       redirect_to myclosets_path
     else
       render :index
