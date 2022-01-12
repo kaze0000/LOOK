@@ -12,9 +12,8 @@ class MyclosetsController < ApplicationController
   
   def create
     @brand_name = BrandName.new(brand_name_params)
-    binding.irb
     if @brand_name.save
-      # 背景削除の処理（開発中はコメントアウト、一人1回/月にしたい）
+      # 背景削除の処理（開発中はコメントアウト）
       # clothe = @brand_name.clothe
       # result = RemoveBg.from_file("public/#{clothe.image.url}")
       # result.save("public/#{clothe.image.url}", overwrite: true)
@@ -40,7 +39,7 @@ class MyclosetsController < ApplicationController
   end
 
   def destroy
-    @clothe = Clothe.includes(:brand_name).find(params[:id])
+    @clothe = Clothe.find(params[:id])
     @clothe.brand_name.destroy!
   end
 

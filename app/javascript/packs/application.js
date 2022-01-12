@@ -14,4 +14,4 @@ ActiveStorage.start()
 
 require("@fortawesome/fontawesome-free/js/all")
 require('jquery')
-// require('./static_page')
+require('./static_page')
