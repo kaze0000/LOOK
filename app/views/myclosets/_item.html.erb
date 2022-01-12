@@ -1,4 +1,9 @@
 <div id="js-item-<%= clothe.id %>" class="item <%= "opacity-half" if clothe.selected === true %>">
+  <div class="closet-button"> 
+    <%= link_to do %>
+      <%= image_tag "open.png" %>
+    <% end %>
+  </div>
   <%= link_to mycloset_path(clothe.id), method: :delete, remote: true, data: {confirm: "この服を削除しますか？"} do %>
     <i class="fas fa-trash"></i>
   <% end %>
@@ -16,6 +21,7 @@
     <div class="item-detail">
       <div style="font-size:1.4rem" id="brand-name-<%=clothe.id%>"><%= clothe.brand_name.name %></div>
       <div id="genre-<%=clothe.id%>">#<%= clothe.genre %></div>
+      <div id="gender-<%=clothe.id%>">#<%= clothe.gender %></div>
     </div>
     <div class="item-select-button">
       <% if clothe.selected === true %>

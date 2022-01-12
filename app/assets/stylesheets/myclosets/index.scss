@@ -22,12 +22,10 @@
   position: relative;
   .option-button{
     font-size: 4rem;
-    // padding: 0% ;
     transform: rotate(90deg);
     position: absolute;
     display: inline-block;
     right: 2%;
-    // right: -4%;  spのとき
     color: rgb(147, 147, 147);
     @include pc{
       font-size: 2.4rem;
@@ -54,7 +52,7 @@
   };
 }
 .outfit-button{
-  background-color:rgb(212, 212, 212);
+  background-color:#d4d4d48f;
   bottom: 8%;
   border-radius: 50%;
   color: #fff;
@@ -112,7 +110,7 @@
 .pre-add-button{
   border-radius: 50%;
   bottom: 25%;
-  background-color: rgb(212, 212, 212);
+  background-color: #d4d4d48f;
   color: #fff;
   display: inline-block;
   font-size: 3rem;

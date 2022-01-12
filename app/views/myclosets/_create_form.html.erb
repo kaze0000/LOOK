@@ -1,4 +1,4 @@
-<p>登録した画像はMyClosetに保存されます。<br><span style="color: #db0303; font-size: 1rem;">すべて必須項目です。</span></p>
+<p>登録した画像はMyClosetに保存され、<br>ShareClosetページにて匿名で公開されます。<br>（非公開選択可）<br><span style="color: #db0303; font-size: 1rem;">すべて必須項目です。</span></p>
 <%= form_with model: brand_name, url: myclosets_path ,local: true , id:"create-form" do |f| %>
     <div class="form-group">
       <%= f.label :name, 'ブランド名を入力してください。'%>
@@ -10,7 +10,12 @@
       <%= i.select :genre, options_for_select(Clothe.genres.keys), {include_blank: ''}, {class: "select-form", onchange:"changeColor(this)"} %>
     </div>
     <div class="form-group">
+      <%= i.label :gender, 'ジェンダーを選択してください。' %>
+      <%= i.select :gender, options_for_select(Clothe.genders.keys), {include_blank: ''}, {class: "select-form", onchange:"changeColor(this)"} %>
+    </div>
+    <div class="form-group">
       <%= i.label :image, '服の画像をアップロードしてください。'%>
+      <span><br>*背景は自動的に切り抜かれます。</span>
       <%= i.file_field :image, class: 'image-form', accept: 'image/*'%>
     </div>
       <%= i.hidden_field :user_id, value: current_user.id %>

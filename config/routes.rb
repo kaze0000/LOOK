@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post 'guest_login', to: 'user_sessions#guest_login'
 
   resources :users, only: %i[new create]
-  resources :clothes, only: %i[index update] do
+  resources :clothes, only: %i[index] do
     member do
       post 'set'
     end
