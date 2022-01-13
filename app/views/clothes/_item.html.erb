@@ -1,19 +1,19 @@
-<div id="js-item-<%= clothe.id %>" class="item <%= "opacity-half" if clothe.selected === true %>">
+<div id="js-item-<%= user_clothe.id %>" class="item">
     <% if logged_in? %>
       <div class="set-clothe-button"> 
-          <%= link_to set_clothe_path(clothe.id), method: :post do %>
+          <%= link_to set_clothe_path(user_clothe.clothe.id), method: :post do %>
             <%= image_tag "hanger.png" %>
           <% end %>
       </div>
     <% end %>
-  <% if clothe.image.url%>
-    <p class="item-img"><%= image_tag clothe.image.url %></p>
+  <% if user_clothe.clothe.image.url%>
+    <p class="item-img"><%= image_tag user_clothe.clothe.image.url %></p>
   <% end %>
   <div class="item-detail-wrapper">
     <div class="item-detail">
-      <div style="font-size:1.4rem" id="brand-name-<%=clothe.id%>"><%= clothe.brand_name.name %></div>
-      <div id="genre-<%=clothe.id%>">#<%= clothe.genre %></div>
-      <div id="gender-<%=clothe.id%>">#<%= clothe.gender %></div>
+      <div style="font-size:1.4rem" id="brand-name-<%=user_clothe.clothe.id%>"><%= user_clothe.clothe.brand_name.name %></div>
+      <div id="category-<%=user_clothe.clothe.id%>">#<%= user_clothe.clothe.category %></div>
+      <div id="gender-<%=user_clothe.clothe.id%>">#<%= user_clothe.clothe.gender %></div>
     </div>
   </div>
 </div>

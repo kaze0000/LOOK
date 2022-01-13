@@ -7,6 +7,6 @@
   <% else %>
     <p style="text-align: center;">ボタンを押すと、服がMyClosetに追加されます。</p>
   <% end %>
-  <%= render 'items', clothes: @clothes %>
-  <%= paginate @clothes %>
+  <%= render 'items', user_clothes: @user_clothes %>
+  <%= paginate @user_clothes %>
 </div>

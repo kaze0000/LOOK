@@ -12,6 +12,6 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-require("@fortawesome/fontawesome-free/js/all")
 require('jquery')
+require("@fortawesome/fontawesome-free/js/all")
 require('./static_page')

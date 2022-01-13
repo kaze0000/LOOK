@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :myclosets do
     member do
       get 'select'
+      get 'publish'
     end
     collection do
       get 'search'
