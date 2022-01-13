@@ -47,8 +47,8 @@ class MyclosetsController < ApplicationController
   end
 
   def search
-    @results = @q.result.includes(:brand_name).joins(:user).where(user_id: current_user.id)
-    @selected_count = Clothe.where(selected: true, user_id: current_user.id).count
+    @results = @q.result.includes(:clothe, clothe: [:brand_name]).where(user_clothes: {user_id: current_user.id})
+    @selected_count = UserClothe.where(selected: true, user_id: current_user.id).count
   end
 
   def select
@@ -66,7 +66,7 @@ class MyclosetsController < ApplicationController
   private
   
   def set_q
-    @q = Clothe.ransack(params[:q])
+    @q = UserClothe.ransack(params[:q])
   end
   
   def select_params

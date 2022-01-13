@@ -37,3 +37,6 @@ en:
         tops: "tops"
         outer: "outer"
         bottoms: "bottoms"
+      gender:
+        mens: 'mens'
+        womens: 'womens'

@@ -9,7 +9,7 @@
     <% end %>
     <%= link_to  'MyClosetに戻る',myclosets_path %>
   </div>
-  <%= render 'items', clothes: @results %>
+  <%= render 'items', user_clothes: @results %>
 
   <% if current_user %>
     <% if @selected_count > 0 %>

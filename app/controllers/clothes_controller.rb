@@ -16,13 +16,13 @@ class ClothesController < ApplicationController
   end
 
   def search
-    @results = @q.result
+    @results = @q.result.includes(:clothe, clothe: [:brand_name]).where(state: 0, relation: 0)
   end
 
   private
   
   def set_q
-    @q = Clothe.includes(:brand_name).joins(:user).where(user: {role:1}).ransack(params[:q])
+    @q = UserClothe.ransack(params[:q])
   end
 
 end
