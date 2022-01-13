@@ -1,7 +1,12 @@
 <header>
   <div class="header-inner">
   <div class="wrapper">
-    <h1><%= link_to 'LOOK', root_path ,'data-turbolinks': false %></h1>
+    <!--<h1><%= link_to 'LOOK', root_path ,'data-turbolinks': false %></h1>-->
+    <h1>
+    <%= link_to root_path , 'data-turbolinks': false do %>
+    <%= image_tag 'logo.png' %>
+    <% end %>
+    </h1>
     <span class="sub-title">-服の組み合わせが試せるサービス-</span>
     <% if !logged_in? %>
       <%= link_to 'Guest', guest_login_path, class:'guestlogin', method: :post %>
