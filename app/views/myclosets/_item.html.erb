@@ -1,6 +1,4 @@
 <div id="js-item-<%= user_clothe.id %>" class="item <%= "opacity-half" if user_clothe.selected %>">
-  <%= user_clothe.id %>
-  <%= user_clothe.clothe_id %>
   <% if user_clothe.relation == 'original' %> 
     <div class="closet-button"> 
       <% if user_clothe.state == "published" %>

@@ -1,8 +1,10 @@
 <p>ブランド名とカテゴリーで検索できます。</p>
 <%= search_form_for @q, url: url, id:'search-form' do |f| %>
-<%= f.label :brand_name_name, 'ブランド名を入力してください。'%>
-<%= f.search_field :brand_name_name_cont, class:'input-form' %>
-<%= f.label :genre, 'カテゴリーを選択してください。' %>
-<%= f.select :genre_eq, Clothe.genres.map{|k,v|[Clothe.genres_i18n[k],v]}, {include_blank: ''}, {class:'select-form'} %>
+<%= f.label :clothe_brand_name_name, 'ブランド名を入力してください。'%>
+<%= f.search_field :clothe_brand_name_name_cont, class:'input-form' %>
+<%= f.label :clothe_category, 'カテゴリーを選択してください。' %>
+<%= f.select :clothe_category_eq, Clothe.categories.map{|k,v|[Clothe.categories_i18n[k],v]}, {include_blank: ''}, {class:'select-form'} %>
+<%= f.label :clothe_category, 'ジェンダーを選択してください。' %>
+<%= f.select :clothe_gender_eq, Clothe.genders.map{|k,v|[Clothe.genders_i18n[k],v]}, {include_blank: ''}, {class:'select-form'} %>
 <%= f.submit '検索する', class:'button' %>
 <% end %>
