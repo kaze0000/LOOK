@@ -7,7 +7,7 @@
     <% else %>
       <p>検索結果が見つかりませんでした。</p>
     <% end %>
-    <%= link_to '洋服一覧に戻る', request.referer %>
+    <%= link_to 'ShareClosetに戻る', request.referer %>
   </div>
-  <%= render 'items', clothes: @results %>
+  <%= render 'items', user_clothes: @results %>
 </div>
