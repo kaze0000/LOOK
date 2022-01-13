@@ -1,36 +1,45 @@
-<div id="js-item-<%= clothe.id %>" class="item <%= "opacity-half" if clothe.selected === true %>">
-  <div class="closet-button"> 
-    <%= link_to do %>
-      <%= image_tag "open.png" %>
-    <% end %>
+<div id="js-item-<%= user_clothe.id %>" class="item <%= "opacity-half" if user_clothe.selected %>">
+  <%= user_clothe.id %>
+  <%= user_clothe.clothe_id %>
+  <% if user_clothe.relation == 'original' %> 
+    <div class="closet-button"> 
+      <% if user_clothe.state == "published" %>
+        <%= link_to publish_mycloset_path(user_clothe.clothe_id, user_clothe:{ state: "privated" }), data: {confirm: "この服を非公開にしますか？"} do %>
+          <%= image_tag "open.png" %>
+        <% end %>
+      <% else %>
+        <%= link_to publish_mycloset_path(user_clothe.clothe_id, user_clothe:{ state: "published" }), data: {confirm: "この服を公開にしますか？"} do %>
+          <%= image_tag "close.png" %>
+        <% end %>
+      <% end %>
+    </div>
+    <span class="option-button js-edit-modal-open-<%=user_clothe.id %>">
+    <%= link_to '...', edit_mycloset_path(user_clothe.id), remote: true %>
+    </span>
+  <% end %> 
+  <div class="edit-modal js-edit-modal-<%=user_clothe.id%>">
+    <div class="edit-modal-bg js-edit-modal-close-<%=user_clothe.id %>"></div>
+    <div class="modal-content-<%=user_clothe.id %> modal-content">
+      <%=render 'update_form', { brand_name: user_clothe.clothe.brand_name, clothe: user_clothe.clothe } %>
+    </div>
   </div>
-  <%= link_to mycloset_path(clothe.id), method: :delete, remote: true, data: {confirm: "この服を削除しますか？"} do %>
+  <%= link_to mycloset_path(user_clothe.id), method: :delete, remote: true, data: {confirm: "この服を削除しますか？"} do %>
     <i class="fas fa-trash"></i>
   <% end %>
-  <span class="option-button js-edit-modal-open-<%=clothe.id%>">
-  <%= link_to '...', edit_mycloset_path(clothe), remote: true %>
-  </span>
-  <div class="edit-modal js-edit-modal-<%=clothe.id%>">
-    <div class="edit-modal-bg js-edit-modal-close-<%=clothe.id%>"></div>
-    <div class="modal-content-<%=clothe.id%> modal-content">
-      <%=render 'update_form', {brand_name: clothe.brand_name, clothe: clothe}%>
-    </div>
-  </div>
-  <p class="item-img"><%= image_tag clothe.image.url %></p>
+  <p class="item-img"><%= image_tag user_clothe.clothe.image.url %></p>
   <div class="item-detail-wrapper">
     <div class="item-detail">
-      <div style="font-size:1.4rem" id="brand-name-<%=clothe.id%>"><%= clothe.brand_name.name %></div>
-      <div id="genre-<%=clothe.id%>">#<%= clothe.genre %></div>
-      <div id="gender-<%=clothe.id%>">#<%= clothe.gender %></div>
+      <div style="font-size:1.4rem" id="brand-name-<%=user_clothe.id %>"><%= user_clothe.clothe.brand_name.name %></div>
+      <div id="category-<%=user_clothe.id %>">#<%= user_clothe.clothe.category %></div>
+      <div id="gender-<%=user_clothe.id %>">#<%= user_clothe.clothe.gender %></div>
     </div>
     <div class="item-select-button">
-      <% if clothe.selected === true %>
-        <%= link_to '選択を解除する',select_mycloset_path(clothe, clothe: { selected: !clothe.selected }),
-        class: "button",id: "js-change-selected-link-#{clothe.id}", remote: true %>
+      <% if user_clothe.selected %>
+        <%= link_to '選択を解除する',select_mycloset_path(user_clothe.id, user_clothe: { selected: !user_clothe.selected }),
+        class: "button",id: "js-change-selected-link-#{user_clothe.id}", remote: true %>
       <% else %>
-        <%= link_to '選択する',select_mycloset_path(clothe, clothe: { selected: !clothe.selected }), class: "button",id: "js-change-selected-link-#{clothe.id}", remote: true %>
+        <%= link_to '選択する',select_mycloset_path(user_clothe.id, user_clothe: { selected: !user_clothe.selected }), class: "button",id: "js-change-selected-link-#{user_clothe.id}", remote: true %>
       <% end %>
     </div>
   </div>
 </div>
-

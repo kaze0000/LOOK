@@ -9,9 +9,9 @@
     <% end %>
     <p id="js-selected-count" class="selected-count"></p>
   <% end %>
-  <p style="text-align:center;"><%= '現在登録している服はありません。' if !@my_clothes.present?%></p>
-  <%= render 'items', clothes: @my_clothes %>
-  <%= paginate @my_clothes %>
+  <p style="text-align:center;"><%= '現在登録している服はありません。' if !@user_clothes.present?%></p>
+  <%= render 'items', user_clothes: @user_clothes %>
+  <%= paginate @user_clothes %>
 </div>
 
 <% if current_user.guest? %>

@@ -3,12 +3,11 @@ class ClothesController < ApplicationController
   skip_before_action :require_login
 
   def index
-    @clothes = Clothe.includes(:brand_name).joins(:user).where(user: {role: 0}).order(created_at: :desc).page(params[:page])
+    @user_clothes = UserClothe.includes(:clothe, clothe: [:brand_name]).where(state: 0, relation: 0).order(created_at: :desc).page(params[:page])
   end
 
   def set
-    clothe = Clothe.find(params[:id])
-    set_clothe = BrandName.new(name: clothe.brand_name.name, clothe_attributes: { genre: clothe.genre, user_id: current_user.id, image: clothe.image })
+    set_clothe = UserClothe.new(user_id: current_user.id, clothe_id: params[:id], relation: 1 )
     if set_clothe.save
       redirect_to myclosets_path
     else
