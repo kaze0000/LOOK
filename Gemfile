@@ -36,6 +36,7 @@ gem 'enum_help'
 
 # Image Upload
 gem 'carrierwave'
+gem 'fog-aws'
 
 # pagenation
 gem 'kaminari'
