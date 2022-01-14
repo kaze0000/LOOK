@@ -82,6 +82,15 @@ label{
   left: 50%;
   transform: translate(-50%,-50%);
   width: 94%;
+  label{
+    font-size: .8rem;
+  }
+  .button{
+    @include sp{
+    margin-top: 10%;
+    margin-bottom: 3%;
+    }
+  }
   a{
     margin-top: 10%;
   }
