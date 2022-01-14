@@ -10,4 +10,5 @@ class Clothe < ApplicationRecord
   validates :category, presence: true
   validates :gender, presence: true
   validates :image, presence: true
+
 end
