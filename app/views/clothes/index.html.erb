@@ -5,7 +5,7 @@
     <p class="require-login">利用するには<%= link_to 'ゲストログイン', guest_login_path, method: :post %>、<br>もしくは
     <%= link_to 'ログイン', login_path %>してください。</p>
   <% else %>
-    <p style="text-align: center;">ボタンを押すと、服がMyClosetに追加されます。</p>
+    <p style="text-align: center;">ボタンを押すと、服がMyClosetに登録されます。</p>
   <% end %>
   <%= render 'items', user_clothes: @user_clothes %>
   <%= paginate @user_clothes %>
