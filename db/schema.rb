@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_12_122054) do
+ActiveRecord::Schema.define(version: 2021_12_29_055124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,25 +22,17 @@ ActiveRecord::Schema.define(version: 2022_01_12_122054) do
   end
 
   create_table "clothes", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.bigint "brand_name_id", null: false
     t.integer "category", default: 0, null: false
     t.string "image", null: false
     t.integer "gender", default: 0, null: false
+    t.boolean "selected", default: false, null: false
+    t.boolean "shared", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["brand_name_id"], name: "index_clothes_on_brand_name_id"
-  end
-
-  create_table "user_clothes", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "clothe_id", null: false
-    t.integer "relation", default: 0, null: false
-    t.integer "state", default: 0, null: false
-    t.boolean "selected", default: false, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["clothe_id"], name: "index_user_clothes_on_clothe_id"
-    t.index ["user_id"], name: "index_user_clothes_on_user_id"
+    t.index ["user_id"], name: "index_clothes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,6 +47,5 @@ ActiveRecord::Schema.define(version: 2022_01_12_122054) do
   end
 
   add_foreign_key "clothes", "brand_names"
-  add_foreign_key "user_clothes", "clothes"
-  add_foreign_key "user_clothes", "users"
+  add_foreign_key "clothes", "users"
 end
