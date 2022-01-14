@@ -16,7 +16,7 @@
     </span>
   <% end %> 
   <div class="edit-modal js-edit-modal-<%=user_clothe.id%>">
-    <div class="edit-modal-bg js-edit-modal-close-<%=user_clothe.id %>"></div>
+    <div class="edit-modal-bg js-edit-modal-close-<%=user_clothe.clothe_id %>"></div>
     <div class="modal-content-<%=user_clothe.id %> modal-content">
       <%=render 'update_form', { brand_name: user_clothe.clothe.brand_name, clothe: user_clothe.clothe } %>
     </div>
@@ -27,9 +27,9 @@
   <p class="item-img"><%= image_tag user_clothe.clothe.image.url %></p>
   <div class="item-detail-wrapper">
     <div class="item-detail">
-      <div style="font-size:1.4rem" id="brand-name-<%=user_clothe.id %>"><%= user_clothe.clothe.brand_name.name %></div>
-      <div id="category-<%=user_clothe.id %>">#<%= user_clothe.clothe.category %></div>
-      <div id="gender-<%=user_clothe.id %>">#<%= user_clothe.clothe.gender %></div>
+      <div style="font-size:1.4rem" id="brand-name-<%=user_clothe.clothe_id %>"><%= user_clothe.clothe.brand_name.name %></div>
+      <div id="category-<%=user_clothe.clothe_id %>">#<%= user_clothe.clothe.category %></div>
+      <div id="gender-<%=user_clothe.clothe_id %>">#<%= user_clothe.clothe.gender %></div>
     </div>
     <div class="item-select-button">
       <% if user_clothe.selected %>

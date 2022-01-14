@@ -37,6 +37,7 @@ class MyclosetsController < ApplicationController
 
   def update
     @clothe = Clothe.find(params[:id])
+    @update_user_clothe = UserClothe.where(user_id: current_user, clothe_id: @clothe)
     @brand_name = @clothe.brand_name
     @brand_name.update(update_brand_name_params)
   end

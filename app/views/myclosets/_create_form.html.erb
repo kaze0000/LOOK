@@ -8,18 +8,18 @@
   <%= f.fields_for :clothe do |i| %>
     <div class="form-group">
       <%= i.label :category, 'カテゴリーを選択してください。' %>
-      <%= i.select :category, options_for_select(Clothe.categories.keys), {include_blank: ''}, {class: "select-form", onchange:"changeColor(this)"} %>
+      <%= i.select :category, options_for_select(Clothe.categories.keys), {include_blank: ''}, {class: "select-form" } %>
     </div>
     <div class="form-group">
       <%= i.label :gender, 'ジェンダーを選択してください。' %>
-      <%= i.select :gender, options_for_select(Clothe.genders.keys), {include_blank: ''}, {class: "select-form", onchange:"changeColor(this)"} %>
+      <%= i.select :gender, options_for_select(Clothe.genders.keys), {include_blank: ''}, {class: "select-form" } %>
     </div>
     <div class="form-group">
       <%= i.label :image, '服の画像をアップロードしてください。'%>
       <span><br>*背景は自動的に切り抜かれます。</span>
       <%= i.file_field :image, class: 'image-form', accept: 'image/*'%>
     </div>
-      <%= i.hidden_field :user_id, value: current_user.id %>
+      <%# <%= i.hidden_field :user_clothes_user_id, value: current_user.id %>
   <% end %>
   <%= f.submit '登録する',class: 'button' %>
 <% end %>
