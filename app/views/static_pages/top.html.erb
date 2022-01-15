@@ -38,6 +38,7 @@ $(function () {
   // ダウンロード
   $("#download").on('click', function () {
     var canvas = document.getElementById("canvas");
+    canvas.setAttribute("crossorigin","anonymous");
     var link = document.createElement("a");
     link.href = canvas.toDataURL("image/png");
     link.download = "outfit.png";
