@@ -1,4 +1,5 @@
 <div id="js-item-<%= user_clothe.id %>" class="item">
+  <% if logged_in? %>
     <% if user_clothe.user_id != current_user.id %>
       <div class="set-clothe-button"> 
           <%= link_to set_clothe_path(user_clothe.clothe.id), method: :post do %>
@@ -6,6 +7,7 @@
           <% end %>
       </div>
     <% end %>
+  <% end %>
   <% if user_clothe.clothe.image.url%>
     <p class="item-img"><%= image_tag user_clothe.clothe.image.url %></p>
   <% end %>
