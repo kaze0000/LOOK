@@ -47,7 +47,6 @@ $(function () {
   (function () {
     var canvas = new fabric.Canvas('canvas');
     canvas.crossOrigin = "anonymous"; 
-    console.log(canvas)
     if (JSON.parse(document.getElementById("selected-bottoms-true").dataset.json)) {
       N = JSON.parse(document.getElementById("selected-bottoms-count").dataset.json);
       var srcs_bottoms = [];
