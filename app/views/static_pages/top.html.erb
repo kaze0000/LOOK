@@ -37,7 +37,6 @@ $(function () {
   $('#canvas').attr('height', h);
   // ダウンロード
   $("#download").on('click', function () {
-    // let canvas = document.getElementById("canvas");
     var link = document.createElement("a");
     link.href = canvas.toDataURL("image/png");
     link.download = "outfit.png";
@@ -45,8 +44,9 @@ $(function () {
   });
   // 即時関数。関数を定義すると同時に実行する。
   (function () {
-    var canvas = new fabric.Canvas('canvas');
-    canvas.crossOrigin = "anonymous"; 
+    var canvas = new fabric.Canvas('canvas',{
+      crossOrigin: "Anonymous"
+    });
     if (JSON.parse(document.getElementById("selected-bottoms-true").dataset.json)) {
       N = JSON.parse(document.getElementById("selected-bottoms-count").dataset.json);
       var srcs_bottoms = [];
