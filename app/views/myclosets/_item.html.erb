@@ -24,7 +24,7 @@
   <%= link_to mycloset_path(user_clothe.id), method: :delete, remote: true, data: {confirm: "この服を削除しますか？"} do %>
     <i class="fas fa-trash"></i>
   <% end %>
-  <p class="item-img"><%= image_tag user_clothe.clothe.image.url, crossOrigin: "anonymous" %></p>
+  <p class="item-img"><%= image_tag user_clothe.clothe.image.url %></p>
   <div class="item-detail-wrapper">
     <div class="item-detail">
       <div style="font-size:1.4rem" id="brand-name-<%=user_clothe.clothe_id %>"><%= user_clothe.clothe.brand_name.name %></div>
