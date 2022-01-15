@@ -28,7 +28,7 @@
   <button class="button" id="download">Download</button>
   <button class="button" id="deleteBtn">Delete</button>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.4.0/fabric.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.4.0/fabric.min.js"></script>
 <script>
 $(function () {
   var w = $('.canvas-wrapper').width();
@@ -47,8 +47,10 @@ $(function () {
   // 即時関数。関数を定義すると同時に実行する。
   (function () {
     var canvas = new fabric.Canvas('canvas',{
-      crossOrigin: "anonymous"
+      // crossOrigin: "anonymous"
     });
+    var cvs = document.getElementById("canvas");
+    cvs.setAttribute("crossOrigin","anonymous");
     if (JSON.parse(document.getElementById("selected-bottoms-true").dataset.json)) {
       N = JSON.parse(document.getElementById("selected-bottoms-count").dataset.json);
       var srcs_bottoms = [];
