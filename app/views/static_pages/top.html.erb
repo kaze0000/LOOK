@@ -46,17 +46,14 @@ $(function () {
   });
   // 即時関数。関数を定義すると同時に実行する。
   (function () {
-    var canvas = new fabric.Canvas('canvas',{
-      // crossOrigin: "anonymous"
-    });
-    var cvs = document.getElementById("canvas");
-    cvs.setAttribute("crossOrigin","anonymous");
+    var canvas = new fabric.Canvas('canvas');
     if (JSON.parse(document.getElementById("selected-bottoms-true").dataset.json)) {
       N = JSON.parse(document.getElementById("selected-bottoms-count").dataset.json);
       var srcs_bottoms = [];
       for (var n = 0; n < N; n++) {
         srcs_bottoms.push(JSON.parse(document.getElementById(`selected-bottoms-${n}`).dataset.json))
       };
+      console.log(srcs_bottoms);
     }
 
     if (JSON.parse(document.getElementById("selected-tops-true").dataset.json)) {
@@ -79,6 +76,8 @@ $(function () {
           mtr: false,
         });
         canvas.add(bottoms);
+        console.log(canvas);
+        console.log(bottoms);
       });
     };
     for (var i in srcs_tops) {
