@@ -38,7 +38,6 @@ $(function () {
   // ダウンロード
   $("#download").on('click', function () {
     var canvas = document.getElementById("canvas");
-    canvas.setAttribute("crossOrigin","anonymous");
     var link = document.createElement("a");
     link.href = canvas.toDataURL("image/png");
     link.download = "outfit.png";
@@ -53,7 +52,6 @@ $(function () {
       for (var n = 0; n < N; n++) {
         srcs_bottoms.push(JSON.parse(document.getElementById(`selected-bottoms-${n}`).dataset.json))
       };
-      console.log(srcs_bottoms);
     }
 
     if (JSON.parse(document.getElementById("selected-tops-true").dataset.json)) {
@@ -67,7 +65,6 @@ $(function () {
     for (var i in srcs_bottoms) {
       fabric.Image.fromURL(`${srcs_bottoms[i]}`, function (oImg) {
         bottoms = oImg;
-        bottoms.crossOrigin = "anonymous";
         bottoms.setControlsVisibility({
           mt: false,
           mb: false,
@@ -76,14 +73,11 @@ $(function () {
           mtr: false,
         });
         canvas.add(bottoms);
-        console.log(canvas);
-        console.log(bottoms);
-      });
+      }, {crossOrigin:'Anonymous'});
     };
     for (var i in srcs_tops) {
       fabric.Image.fromURL(`${srcs_tops[i]}`, function (oImg) {
         tops = oImg;
-        tops.crossOrigin = "anonymous";
         tops.setControlsVisibility({
           mt: false,
           mb: false,
@@ -92,7 +86,7 @@ $(function () {
           mtr: false,
         });
         canvas.add(tops);
-      });
+      }, {crossOrigin:'Anonymous'});
     };
 
     function deleteObj() {
