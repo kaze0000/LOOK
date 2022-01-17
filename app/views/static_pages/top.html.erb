@@ -1,5 +1,4 @@
 <%= render 'shared/nav' %>
-
 <div id="selected-bottoms-true" data-json="<%=@selected_bottoms.present?%>">
 <% if @selected_bottoms.present?%>
   <% for n in 0...@selected_bottoms.count %>
@@ -8,7 +7,6 @@
     </div>
   <% end %>
 <% end %>
-
 <div id="selected-tops-true" data-json="<%=@selected_tops.present?%>">
 <% if @selected_tops.present?%>
   <% for n in 0...@selected_tops.count %>
@@ -37,7 +35,7 @@ $(function () {
   $('#canvas').attr('height', h);
   // ダウンロード
   $("#download").on('click', function () {
-    // let canvas = document.getElementById("canvas");
+    var canvas = document.getElementById("canvas");
     var link = document.createElement("a");
     link.href = canvas.toDataURL("image/png");
     link.download = "outfit.png";
@@ -46,7 +44,6 @@ $(function () {
   // 即時関数。関数を定義すると同時に実行する。
   (function () {
     var canvas = new fabric.Canvas('canvas');
-    canvas.crossOrigin = "anonymous"; 
     if (JSON.parse(document.getElementById("selected-bottoms-true").dataset.json)) {
       N = JSON.parse(document.getElementById("selected-bottoms-count").dataset.json);
       var srcs_bottoms = [];
@@ -66,28 +63,28 @@ $(function () {
     for (var i in srcs_bottoms) {
       fabric.Image.fromURL(`${srcs_bottoms[i]}`, function (oImg) {
         bottoms = oImg;
-        oImg.setControlsVisibility({
+        bottoms.setControlsVisibility({
           mt: false,
           mb: false,
           ml: false,
           mr: false,
           mtr: false,
         });
-        canvas.add(oImg);
-      });
+        canvas.add(bottoms);
+      }, {crossOrigin:'Anonymous'});
     };
     for (var i in srcs_tops) {
       fabric.Image.fromURL(`${srcs_tops[i]}`, function (oImg) {
         tops = oImg;
-        oImg.setControlsVisibility({
+        tops.setControlsVisibility({
           mt: false,
           mb: false,
           ml: false,
           mr: false,
           mtr: false,
         });
-        canvas.add(oImg);
-      });
+        canvas.add(tops);
+      }, {crossOrigin:'Anonymous'});
     };
 
     function deleteObj() {
