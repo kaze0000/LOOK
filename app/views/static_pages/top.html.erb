@@ -88,23 +88,14 @@ $(function () {
     };
 
     function deleteObj() {
-      //選択されているオブジェクトを削除する。
       let activeObjects = canvas.getActiveObjects();
-
       if (activeObjects != null) {
         if (confirm('選択された画像を削除しますか？')) {
           activeObjects.forEach(obj => {
-
             //対象オブジェクトを削除
             canvas.remove(obj);
-
-            //矩形のIDとcanvas.item紐づけ用配列も削除する。
-            let arrIndex = arrayRect.indexOf(obj.id);
-            arrayRect.splice(arrIndex, 1);
           });
         }
-      } else {
-        alert("オブジェクトが選択されていません。");
       }
     }
     deleteBtn.addEventListener('click', deleteObj, false);
