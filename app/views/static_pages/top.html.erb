@@ -20,11 +20,11 @@
   <div class="canvas-wrapper">
     <canvas id="canvas" width="600" height="600"></canvas>
   </div>
-  <span>chromeで画像のダウンロードがうまくいかない場合は、<br>safariを利用してください。</span>
-</div>
-<div class="buttons flex">
-  <button class="button" id="download">Download</button>
-  <button class="button" id="deleteBtn">Delete</button>
+  <div class="buttons flex">
+    <button class="button" id="download">Download</button>
+    <button class="button" id="deleteBtn">Delete</button>
+  </div>
+  <div class="describe-preview">画像のダウンロードがうまくいかない場合は、<span id="preview" style="color:#0882f5;" >PreView</span>を押し、画像を保存してください。</div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.4.0/fabric.min.js"></script>
 <script>
@@ -40,6 +40,13 @@ $(function () {
     link.href = canvas.toDataURL("image/png");
     link.download = "outfit.png";
     link.click();
+  });
+  $('#preview').on('click', function(){
+    var canvas = document.getElementById("canvas");
+    var link = document.createElement("a");
+    link.href = canvas.toDataURL("image/png");
+    $('.preview').remove();
+    $('.box-wrapper').append(`<div class="preview"><img src=${link.href}></div>`);
   });
   // 即時関数。関数を定義すると同時に実行する。
   (function () {
