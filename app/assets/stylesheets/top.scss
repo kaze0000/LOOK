@@ -30,7 +30,7 @@
   border-radius: 7px;
 }
 .buttons{
-  margin: 0 auto;
+  margin: 5% auto;
   width: 100%;
   max-width: 400px;
   .button{
@@ -38,4 +38,15 @@
       max-width: 120px;
     }
   }
+}
+.describe-preview{
+  font-size: 1.2rem;
+  margin: 2% auto;
+  span{
+    font-size: 1.6rem;
+  }
+}
+.preview{
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 7px;
 }
