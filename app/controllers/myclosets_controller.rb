@@ -16,15 +16,19 @@ class MyclosetsController < ApplicationController
       clothe = @brand_name.clothe
       @user_clothe = UserClothe.new(user_id: current_user.id, clothe_id: clothe.id)
       @user_clothe.save
-      # 背景削除の処理（開発中はコメントアウト）
-      # clothe = @brand_name.clothe
-      # result = RemoveBg.from_file("public/#{clothe.image.url}")
-      # result.save("public/#{clothe.image.url}", overwrite: true)
+      # 背景削除の処理
+      result = RemoveBg.from_file("public/#{clothe.image.url}")
+      result.save("public/#{clothe.image.url}", overwrite: true)
       
+      # s3に保存
+      file = File.new("public/#{clothe.image.url}")
+      s3 = Aws::S3::Resource.new
+      obj = s3.bucket('look-closet').object("#{clothe.id}.png")
+      obj.upload_file(file.path, acl: 'public-read')
+
       redirect_to myclosets_path
       flash[:alert] = '登録に成功しました。'
     else
-      # TODO　else処理を考える　flashかなんか出す？
       redirect_to myclosets_path
       flash[:alert] = '登録に失敗しました。'
     end
