@@ -3,7 +3,7 @@ class ClothesController < ApplicationController
   skip_before_action :require_login
 
   def index
-    @user_clothes = UserClothe.includes(:clothe, clothe: [:brand_name]).where(state: 0, relation: 0).order(created_at: :desc).page(params[:page])
+    @user_clothes = UserClothe.includes(:clothe, clothe: [:brand_name]).published.original.order(created_at: :desc).page(params[:page])
   end
 
   def set
@@ -16,7 +16,7 @@ class ClothesController < ApplicationController
   end
 
   def search
-    @results = @q.result.includes(:clothe, clothe: [:brand_name]).where(state: 0, relation: 0)
+    @results = @q.result.includes(:clothe, clothe: [:brand_name]).published.original
   end
 
   private

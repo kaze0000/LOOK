@@ -11,4 +11,6 @@ class Clothe < ApplicationRecord
   validates :gender, presence: true
   validates :image, presence: true
 
+  scope :bottoms, -> { where(category: 2) }
+  scope :tops, -> { where(category: [0,1]) }
 end
