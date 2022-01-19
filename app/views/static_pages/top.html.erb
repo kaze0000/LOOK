@@ -3,7 +3,7 @@
 <% if @selected_bottoms.present?%>
   <% for n in 0...@selected_bottoms.count %>
     <div id="selected-bottoms-count" data-json="<%= @selected_bottoms.count %>">
-    <div id="selected-bottoms-<%=n%>" data-json="<%= @selected_bottoms[n].image.url.to_json%>">
+    <div id="selected-bottoms-<%=n%>" data-json="<%= @selected_bottoms[n].id %>">
     </div>
   <% end %>
 <% end %>
@@ -11,7 +11,7 @@
 <% if @selected_tops.present?%>
   <% for n in 0...@selected_tops.count %>
     <div id="selected-tops-count" data-json="<%= @selected_tops.count %>">
-    <div id="selected-tops-<%=n%>" data-json="<%= @selected_tops[n].image.url.to_json%>">
+    <div id="selected-tops-<%=n%>" data-json="<%= @selected_tops[n].id %>">
     </div>
   <% end %>
 <% end %>
@@ -55,7 +55,9 @@ $(function () {
       N = JSON.parse(document.getElementById("selected-bottoms-count").dataset.json);
       var srcs_bottoms = [];
       for (var n = 0; n < N; n++) {
-        srcs_bottoms.push(JSON.parse(document.getElementById(`selected-bottoms-${n}`).dataset.json))
+        var id = JSON.parse(document.getElementById(`selected-bottoms-${n}`).dataset.json);
+        var srcs_bottom = `https://look-closet.s3.ap-northeast-1.amazonaws.com/${id}.png`;
+        srcs_bottoms.push(srcs_bottom)
       };
     }
 
@@ -63,7 +65,9 @@ $(function () {
       N = JSON.parse(document.getElementById("selected-tops-count").dataset.json);
       var srcs_tops = [];
       for (var n = 0; n < N; n++) {
-        srcs_tops.push(JSON.parse(document.getElementById(`selected-tops-${n}`).dataset.json))
+        var id = JSON.parse(document.getElementById(`selected-tops-${n}`).dataset.json);
+        var srcs_top = `https://look-closet.s3.ap-northeast-1.amazonaws.com/${id}.png`;
+        srcs_tops.push(srcs_top)
       };
     }
 
