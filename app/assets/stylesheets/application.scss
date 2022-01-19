@@ -71,6 +71,9 @@ ul{
 .active{
   display: block;
 }
+.rotate{
+  transform: rotate(90deg);
+}
 .black{
   color: #333;
 }
