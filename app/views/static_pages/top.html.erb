@@ -16,6 +16,14 @@
   <% end %>
 <% end %>
 <div class="box-wrapper">
+   <div class="howto-content">
+      <p>HowtoUse<i class="fas fa-angle-right"></i></p>
+      <ol>
+        <li>ログイン後、ShareClosetから気になる服を探します。</li>
+        <li>服が見つかったらMyClosetページに登録しましょう。</li>
+        <li>組み合わせたい服を選択し、ボタンを押すとコーディネートの完成です。</li>
+      </ol>
+  </div>
   <span>ブラウザをリロードすると服の選択はすべて解除されます。</span>
   <div class="canvas-wrapper">
     <canvas id="canvas" width="600" height="600"></canvas>
@@ -28,6 +36,11 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.4.0/fabric.min.js"></script>
 <script>
+$('.howto-content p').on('click', function(){
+  $('.howto-content svg').toggleClass('rotate');
+  $('.howto-content ol').slideToggle();
+})
+
 $(function () {
   var w = $('.canvas-wrapper').width();
   var h = $('.canvas-wrapper').height();
