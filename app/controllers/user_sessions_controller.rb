@@ -23,7 +23,8 @@ class UserSessionsController < ApplicationController
     @guest_user = User.create(
       name: 'ゲスト',
       email: SecureRandom.alphanumeric(10) + "@email.com",
-      password: 'password'
+      password: 'password',
+      password_confirmation: 'password'
     )
     auto_login(@guest_user)
     redirect_to myclosets_path
