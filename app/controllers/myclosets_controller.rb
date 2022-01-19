@@ -59,7 +59,7 @@ class MyclosetsController < ApplicationController
   end
 
   def publish
-    clothe.user_clothes.update(publish_params)
+    @clothe.user_clothes.update(publish_params)
     redirect_to myclosets_path
   end
   
