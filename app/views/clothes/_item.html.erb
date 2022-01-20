@@ -9,7 +9,7 @@
     <% end %>
   <% end %>
   <p class="item-img">
-    <img src="https://look-closet.s3.ap-northeast-1.amazonaws.com/<%= user_clothe.clothe_id %>.png" crossorigin="anonymous">
+    <img src="https://look-closet.s3.ap-northeast-1.amazonaws.com/<%= user_clothe.clothe_id %>.png" crossorigin="anonymous" onerror="this.src='assets/no-image.png'">
   </p>
   <div class="item-detail-wrapper">
     <div class="item-detail">
