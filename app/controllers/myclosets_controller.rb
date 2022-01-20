@@ -14,11 +14,11 @@ class MyclosetsController < ApplicationController
   
   def create
     @brand_name = BrandName.new(brand_name_params)
-    if @brand_name.save
-      clothe = @brand_name.clothe
-      user_clothe = UserClothe.new(user_id: current_user.id, clothe_id: clothe.id)
-      user_clothe.save
-      if File.exist?("public/#{clothe.image.url}")
+    clothe = @brand_name.clothe
+    if File.exist?("public/#{clothe.image.url}")
+      if @brand_name.save
+        user_clothe = UserClothe.new(user_id: current_user.id, clothe_id: clothe.id)
+        user_clothe.save
         # 背景削除の処理
         result = RemoveBg.from_file("public/#{clothe.image.url}")
         result.save("public/#{clothe.image.url}", overwrite: true)
@@ -31,11 +31,11 @@ class MyclosetsController < ApplicationController
         flash[:alert] = '登録に成功しました。'
       else
         redirect_to myclosets_path
-        flash[:alert] = '画像の読み込みに失敗しました。ファイル名は半角英数字のみで指定してください。'
+        flash[:alert] = '登録に失敗しました。'
       end
     else
       redirect_to myclosets_path
-      flash[:alert] = '登録に失敗しました。'
+      flash[:alert] = '画像の読み込みに失敗しました。ファイル名は半角英数字のみで指定してください。'
     end
   end
   
