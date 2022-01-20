@@ -214,14 +214,14 @@ nav{
   .first-and-prev,.next-and-last,.page-numbers,.empty-div{
     flex-basis: 30%;
   }
+  .next-and-last,.first-and-prev{
+    font-size: 1.2rem;
+  }
   span{
     display: inline-block;
     line-height: 40px;
     max-width: 40px;
     width: 100%;
-    @include sp{
-      max-width: 30px;
-    }
     &:hover{
       background: #5b5b5b21;
     }
