@@ -17,7 +17,6 @@ label{
     height: 25px;
   }
 }
-
 .image-form{
   width: 100%;
   height: 30px;
@@ -25,7 +24,15 @@ label{
   color: #8d8d8d;
   margin: 2% auto 6%;
 }
-
+.attention{
+  padding: 2%;
+  background-color: #ffffff3b;
+  text-align: left;
+  border-left: 1px solid #adaaaa;
+  max-width: 300px;
+  margin: 0 auto;
+  color: #db0303;
+}
 // 検索フォーム
 .search-result{
   text-align: center;
