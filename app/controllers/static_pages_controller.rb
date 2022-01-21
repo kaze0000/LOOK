@@ -9,4 +9,6 @@ class StaticPagesController < ApplicationController
   def reset
     UserClothe.includes(:user, :clothe).selected(current_user).update(selected: false)
   end
+
+  def serveice; end
 end

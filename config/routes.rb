@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to:'static_pages#top'
+  get 'serveice', to: 'static_pages#service'
   get 'login', to: 'user_sessions#new'
   post 'login',to: 'user_sessions#create'
   delete 'login',to: 'user_sessions#destroy'
