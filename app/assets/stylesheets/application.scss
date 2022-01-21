@@ -166,6 +166,13 @@ footer{
         text-align: center;
         display: block;
       }
+      li{
+        &:not(:last-child){
+          @include sp{
+          margin-bottom: 2%;
+          }
+        }
+      }
     }
   }
 }
