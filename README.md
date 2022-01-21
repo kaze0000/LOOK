@@ -25,7 +25,6 @@
     - データの追加、削除
 - 導入していきたい機能
     - 過去に組み合わせたコーディネート一覧が見られる
-    - 商品ページに飛べる
 
 ## なぜこのサービスを作りたいのか
 - １つのルックを作るように、好きな服を自由に組み替えられたら楽しいと思ったから
@@ -42,4 +41,5 @@ README〜ER図作成：12/31 〆切
 https://www.figma.com/file/zZJsJyUjjlwYso0Krk0j2p/Untitled?node-id=58%3A2
 
 ## ER図
-https://i.gyazo.com/82919bcc0aa783fb8c3816929b6b7271.png
+https://user-images.githubusercontent.com/74648659/150444744-55413c65-5467-4e39-95d4-f21e94dc089b.png
+
