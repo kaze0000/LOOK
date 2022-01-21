@@ -57,6 +57,12 @@ ul{
   justify-content: space-around;
   align-items: center;
 }
+.sp-br{
+  display: none;
+  @include sp{
+    display: block;
+  }
+}
 .button{
   width: 100%;
   max-width: 150px;

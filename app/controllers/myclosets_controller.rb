@@ -13,6 +13,12 @@ class MyclosetsController < ApplicationController
   end
   
   def create
+    account = RemoveBg.account_info
+    if account.api.free_calls == 0
+      redirect_to myclosets_path
+      flash[:alert] = '現在アクセス集中により、<br class="sp-br">画像登録に失敗しました。<br>時間を置いてからご利用ください。'
+      return
+    end
     @brand_name = BrandName.new(brand_name_params)
     clothe = @brand_name.clothe
     if File.exist?("public/#{clothe.image.url}")

@@ -1,6 +1,6 @@
 <%= render 'shared/nav' %>
 <%= render 'modal', type: "search" %>
-<p id="alert"><%= alert %></p>
+<p id="alert"><%= flash[:alert].html_safe if !flash[:alert].blank? %></p>
 <div class="contents-wrapper">
   <p style="text-align:center;"><%= current_user.name + 'さんのClosetです。' %></p>
   <% if current_user %>
