@@ -8,9 +8,14 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <% if Rails.env.production? %>
-      <%= render 'layouts/google_analytics' %>
-    <% end %>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H0MS082HQ8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-H0MS082HQ8');
+    </script>
   </head>
 
   <body>
