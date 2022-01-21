@@ -2,8 +2,8 @@
 <%= render 'myclosets/modal', type: "search" %>
 <div class="contents-wrapper">
   <% if !logged_in? %>
-    <p class="require-login">利用するには<%= link_to 'ゲストログイン', guest_login_path, method: :post %>、<br>もしくは
-    <%= link_to 'ログイン', login_path %>してください。</p>
+    <p class="require-login"><%= link_to 'ゲストログイン', guest_login_path, method: :post %>、もしくは
+    <%= link_to 'ログイン', login_path %>して、<br>ここから気になる服を探しましょう。</p>
   <% else %>
     <p style="text-align: center;">ボタンを押すと、服がMyClosetに登録されます。</p>
   <% end %>
