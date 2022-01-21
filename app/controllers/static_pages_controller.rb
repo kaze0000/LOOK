@@ -11,4 +11,6 @@ class StaticPagesController < ApplicationController
   end
 
   def serveice; end
+
+  def privacy; end
 end
