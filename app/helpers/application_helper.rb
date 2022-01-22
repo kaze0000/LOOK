@@ -13,6 +13,7 @@ module ApplicationHelper
         { href: image_url('ogp.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' },
       ],
       og: {
+        title: 'LOOK',
         site_name: 'LOOK',
         description: 'ブラウザ上で服の組み合わせが試せるサービス。', 
         type: 'website',
@@ -20,6 +21,12 @@ module ApplicationHelper
         image: image_url('ogp.png'),
         locale: 'ja_JP',
       },
+      twitter: {
+        card: 'summary_large_image',
+        description: 'ブラウザ上で服の組み合わせが試せるサービス。',
+        title: 'LOOK',
+        image: image_url('ogp.png'),
+      }
     }
   end
 end
