@@ -2,6 +2,17 @@
 label{
   font-size: 1.2rem;
 }
+#create-form{
+  .form-group{
+    position: relative;
+    .fa-angle-down{
+      position: absolute;
+      right: 10%;
+      top: 60%;
+      font-size: 1.6rem;
+    }
+  }
+}
 .input-form,.select-form{
   color: #333;
   background-color: #fff;
