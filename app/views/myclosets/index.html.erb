@@ -21,12 +21,26 @@
 <% end %>
 
 <%= render 'modal', type: 'create' %>
+<%= render 'modal', type: 'fitting' %>
 
 <div class="outfit-button <%= "bg-gray" if @selected_count > 0 %>">
   <% if @selected_count > 0 %>
-    <%= link_to root_path , 'data-turbolinks': false, data: {confirm: "選択した服を組み合わせますか？" } do %><%=image_tag "clothes.png"%><% end %>
+    <a onclick="fitting_modal()"><%=image_tag "clothes.png"%></a>
   <% else %>
     <a class="pre-selected"><%=image_tag "clothes.png"%><span>服を選択してください。</span></a>
   <% end %>
 </div>
 
+<script>
+function fitting_modal(){
+$('.js-fitting-modal').fadeIn();
+$(".js-fitting-modal-close").on('click',function(){
+    $('.js-fitting-modal').fadeOut();
+    return false;
+});
+
+if (!$('#fitting-form').length){
+  $('.js-fitting-modal-content').prepend('<%= j(render 'fitting_form')%>');
+}
+};
+</script>
