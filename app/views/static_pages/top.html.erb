@@ -16,13 +16,13 @@
   <% end %>
 <% end %>
 <div class="box-wrapper">
-  <div class="about">
+  <div class="about fade-element">
     <p class="about-title">Whats' LOOK?</p>
     <p class="about-subtitle">ブラウザ上で<br>試着ができるサービス。</p>
     <div class="about-content">
       <div class="about-text">
         <span>When</span>
-        <p>こんなときにご利用ください。<br>・ECで買う前に試着してみたい!<br>・他の人の服でもコーディネートを組んでみたい!</p>
+        <p class="test">こんなときにご利用ください。<br>・ECで買う前に試着してみたい!<br>・他の人の服でもコーディネートを組んでみたい!</p>
       </div>
       <div class="about-image"><%= image_tag 'top-image.png' %></div>
     </div>
@@ -30,21 +30,21 @@
 
   <div class="howto">
     <p class="howto-title">HowtoUse</p>
-    <div class="howto-content">
+    <div class="howto-content fade-element">
       <div class="howto-text">
         <p>ログイン後、ShareClosetから<br>気になる服を探してMyClosetに登録しましょう。</p>
         <span>Search</span>
       </div>
       <div class="howto-image"><%= image_tag 'tutorial_1.png' %></div>
     </div>
-    <div class="howto-content">
+    <div class="howto-content fade-element">
       <div class="howto-text">
         <p>MyClosetから試着したい服を選んでください。右下の服のアイコンをクリックすると試着できます。</p>
         <span>Select</span>
       </div>
       <div class="howto-image"><%= image_tag 'tutorial_2.png' %></div>
     </div>
-    <div class="howto-content">
+    <div class="howto-content fade-element">
       <div class="howto-text">
         <p>試着完了です!<br>試着結果は画像としてダウンロードできます。</p>
         <span>TryOn</span>
@@ -63,9 +63,25 @@
   <div class="describe-preview">画像のダウンロードがうまくいかない場合は、<span id="preview" style="color:#0882f5;" >PreView</span>を押し、表示される画像を保存してください。</div>
 </div>
 <script>
-$('.howto-title').on('click', function(){
-  $('.howto').slideToggle();
-})
+$(function () {
+  $(window).ready(function () {
+    $('.about').addClass("is-fadein");
+  });
+});
+
+$(function () {
+  $(window).scroll(function () {
+    const windowHeight = $(window).height();
+    const scroll = $(window).scrollTop();
+
+    $('.fade-element').each(function () {
+      const targetPosition = $(this).offset().top;
+      if (scroll > targetPosition - windowHeight + 100) {
+        $(this).addClass("is-fadein");
+      }
+    });
+  });
+});
 
 $(function () {
   var w = $('.canvas-wrapper').width();
