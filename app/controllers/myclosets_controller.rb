@@ -2,6 +2,7 @@ class MyclosetsController < ApplicationController
   before_action :set_q, only: %i[search]
   before_action :set_user_clothe, only: %i[edit destroy select]
   before_action :set_clothe, only: %i[update publish]
+
   def index
     @user_clothes = current_user.user_clothes.includes(:clothe, clothe: [:brand_name]).mine_and_others_published.order(created_at: :desc).page(params[:page])
     @selected_count = UserClothe.selected(current_user).count
@@ -71,6 +72,11 @@ class MyclosetsController < ApplicationController
   def publish
     @clothe.user_clothes.update(publish_params)
     redirect_to myclosets_path
+  end
+
+  def fitting
+    @selected_bottoms = Clothe.joins(:user_clothes).bottoms.merge(UserClothe.selected(current_user))
+    @selected_tops = Clothe.joins(:user_clothes).tops.merge(UserClothe.selected(current_user))
   end
   
   private

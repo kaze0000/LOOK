@@ -1,0 +1,122 @@
+<%= render 'shared/nav' %>
+<div id="selected-bottoms-true" data-json="<%=@selected_bottoms.present?%>">
+<% if @selected_bottoms.present?%>
+  <% for n in 0...@selected_bottoms.count %>
+    <div id="selected-bottoms-count" data-json="<%= @selected_bottoms.count %>">
+    <div id="selected-bottoms-<%=n%>" data-json="<%= @selected_bottoms[n].id %>">
+    </div>
+  <% end %>
+<% end %>
+<div id="selected-tops-true" data-json="<%= @selected_tops.present? %>">
+<% if @selected_tops.present?%>
+  <% for n in 0...@selected_tops.count %>
+    <div id="selected-tops-count" data-json="<%= @selected_tops.count %>">
+    <div id="selected-tops-<%=n%>" data-json="<%= @selected_tops[n].id %>">
+    </div>
+  <% end %>
+<% end %>
+<div class="box-wrapper">
+  <div class="canvas-wrapper">
+    <canvas id="canvas" width="600" height="600"></canvas>
+  </div>
+  <div class="buttons flex">
+    <button class="button" id="download">Download</button>
+    <button class="button" id="deleteBtn">Delete</button>
+  </div>
+  <div class="describe-preview">画像のダウンロードがうまくいかない場合は、<span id="preview" style="color:#0882f5;" >PreView</span>を押し、表示される画像を保存してください。</div>
+</div>
+<script>
+$(function () {
+  var w = $('.canvas-wrapper').width();
+  var h = $('.canvas-wrapper').height();
+  $('#canvas').attr('width', w);
+  $('#canvas').attr('height', h);
+  // ダウンロード
+  $("#download").on('click', function () {
+    var canvas = document.getElementById("canvas");
+    var link = document.createElement("a");
+    link.href = canvas.toDataURL("image/png");
+    link.download = "outfit.png";
+    link.click();
+  });
+  $('#preview').on('click', function(){
+    var canvas = document.getElementById("canvas");
+    var link = document.createElement("a");
+    link.href = canvas.toDataURL("image/png");
+    $('.preview').remove();
+    $('.box-wrapper').append(`<div class="preview"><img src=${link.href}></div>`);
+  });
+  // 即時関数。関数を定義すると同時に実行する。
+  (function () {
+    var canvas = new fabric.Canvas('canvas');
+    if (JSON.parse(document.getElementById("selected-bottoms-true").dataset.json)) {
+      N = JSON.parse(document.getElementById("selected-bottoms-count").dataset.json);
+      var srcs_bottoms = [];
+      for (var n = 0; n < N; n++) {
+        var id = JSON.parse(document.getElementById(`selected-bottoms-${n}`).dataset.json);
+        var srcs_bottom = `https://look-closet.s3.ap-northeast-1.amazonaws.com/${id}.png`;
+        srcs_bottoms.push(srcs_bottom)
+      };
+    }
+
+    if (JSON.parse(document.getElementById("selected-tops-true").dataset.json)) {
+      N = JSON.parse(document.getElementById("selected-tops-count").dataset.json);
+      var srcs_tops = [];
+      for (var n = 0; n < N; n++) {
+        var id = JSON.parse(document.getElementById(`selected-tops-${n}`).dataset.json);
+        var srcs_top = `https://look-closet.s3.ap-northeast-1.amazonaws.com/${id}.png`;
+        srcs_tops.push(srcs_top)
+      };
+    }
+
+    for (var i in srcs_bottoms) {
+      fabric.Image.fromURL(`${srcs_bottoms[i]}`, function (oImg) {
+        bottoms = oImg;
+        bottoms.setControlsVisibility({
+          mt: false,
+          mb: false,
+          ml: false,
+          mr: false,
+          // mtr: false,
+        });
+        canvas.add(bottoms);
+      }, {crossOrigin:'Anonymous'});
+    };
+    for (var i in srcs_tops) {
+      fabric.Image.fromURL(`${srcs_tops[i]}`, function (oImg) {
+        tops = oImg;
+        tops.setControlsVisibility({
+          mt: false,
+          mb: false,
+          ml: false,
+          mr: false,
+          mtr: false,
+        });
+        canvas.add(tops);
+      }, {crossOrigin:'Anonymous'});
+    };
+
+    function deleteObj() {
+      let activeObjects = canvas.getActiveObjects();
+      if (activeObjects != null) {
+        if (confirm('選択された画像を削除しますか？')) {
+          activeObjects.forEach(obj => {
+            //対象オブジェクトを削除
+            canvas.remove(obj);
+          });
+        }
+      }
+    }
+    deleteBtn.addEventListener('click', deleteObj, false);
+  })();
+  window.onload = function () {
+    // 直接順番指定
+    if (typeof tops != 'undefined'){
+    tops.moveTo(100);
+    }
+    if (typeof bottoms != 'undefined'){
+    bottoms.moveTo(0);
+    }
+  };
+});
+</script>

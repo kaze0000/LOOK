@@ -3,6 +3,7 @@
     <ul class="flex">
       <li class="<%= 'current-nav' if current_page?(clothes_path)%>"><%= link_to 'ShareCloset', clothes_path %></li>
       <li class="<%= 'current-nav' if current_page?(myclosets_path)%>"><%= link_to 'MyCloset', myclosets_path %></li>
+      <li class="<%= 'current-nav' if current_page?(fitting_myclosets_path)%>"><%= link_to 'FittingRoom', fitting_myclosets_path %></li>
       <div class="twitter-share">
         <%= link_to "https://twitter.com/share?url=https://www.look-closet.com/&text=服の組み合わせが試せるサービス LOOK", class: 'twitter', target: '_blank' do %>
           <i class="fab fa-twitter"></i>
