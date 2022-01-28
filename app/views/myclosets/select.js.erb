@@ -20,5 +20,5 @@ $("#js-selected-count-prev").css("display","none");
   $("#js-selected-count").css("display","block");
   $("#js-selected-count").text("<%= @selected_count %>件選択中です");
   $(".outfit-button").css("background-color","#2c2c2c96");
-  $('.outfit-button').html('<%= link_to root_path , 'data-turbolinks': false, data: {confirm: "選択した服を組み合わせますか？" } do %><%=image_tag "clothes.png"%><% end %>)')
+  $('.outfit-button').html('<a onclick="fitting_modal()"><%=image_tag "clothes.png"%></a>')
 <% end %>
