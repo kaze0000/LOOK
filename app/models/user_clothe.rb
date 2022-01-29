@@ -9,4 +9,5 @@ class UserClothe < ApplicationRecord
   scope :original, -> { where(relation: 0) }
   scope :published, -> { where(state: 0) }
   scope :mine_and_others_published, -> { where.not(relation: 1, state: 1 ) }
+  scope :replica, -> (user_clothe){ where(relation: 1, clothe_id: user_clothe.clothe)}
 end
