@@ -16,7 +16,7 @@
       <div style="font-size:1.4rem" id="brand-name-<%=user_clothe.clothe.id%>"><%= user_clothe.clothe.brand_name.name %></div>
       <div id="category-<%=user_clothe.clothe.id%>">#<%= user_clothe.clothe.category %></div>
       <div id="gender-<%=user_clothe.clothe.id%>">#<%= user_clothe.clothe.gender %></div>
-      <div style="font-size: 0.8rem;"><%=UserClothe.where(relation: 1, clothe_id: user_clothe.clothe).count%>人がMyClosetに登録中</div>
+      <div style="font-size: 0.8rem;"><%= UserClothe.replica(user_clothe).count %>人がMyClosetに登録中</div>
     </div>
   </div>
 </div>
