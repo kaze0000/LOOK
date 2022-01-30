@@ -20,7 +20,7 @@
 </div>
 
 <% if current_user.guest? %>
-  <a class="pre-add-button">+<span>本ログインで、持っている服を追加できます。</span></a>
+  <a class="pre-add-button">+<span>本ログインで、お持ちの服を追加できます。</span></a>
 <% else %>
   <%= link_to '+', new_mycloset_path, remote: true, class:"add-button js-create-modal-open" %>
 <% end %>
