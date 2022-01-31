@@ -4,7 +4,7 @@ module ApplicationHelper
       site: 'LOOK',
       reverse: true,
       separator: '|',
-      description: 'ブラウザ上で服の組み合わせが試せるサービス。',
+      description: 'ブラウザ上で試着ができるサービス。',
       keywords: '服,ファッション,コーディネート',
       canonical: request.original_url,
       noindex: ! Rails.env.production?,
@@ -15,7 +15,7 @@ module ApplicationHelper
       og: {
         title: 'LOOK',
         site_name: 'LOOK',
-        description: 'ブラウザ上で服の組み合わせが試せるサービス。', 
+        description: 'ブラウザ上で試着ができるサービス。', 
         type: 'website',
         url: request.original_url,
         image: image_url('ogp.png'),
@@ -23,7 +23,7 @@ module ApplicationHelper
       },
       twitter: {
         card: 'summary_large_image',
-        description: 'ブラウザ上で服の組み合わせが試せるサービス。',
+        description: 'ブラウザ上で試着ができるサービス。',
         title: 'LOOK',
         image: image_url('ogp.png'),
       }

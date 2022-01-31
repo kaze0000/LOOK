@@ -13,7 +13,7 @@
   </p>
   <div class="item-detail-wrapper">
     <div class="item-detail">
-      <div style="font-size:1.4rem, max-width: 100px;" id="brand-name-<%=user_clothe.clothe.id%>"><%= user_clothe.clothe.brand_name.name %></div>
+      <div style="font-size:1.4rem; max-width: 100px;" id="brand-name-<%=user_clothe.clothe.id%>"><%= user_clothe.clothe.brand_name.name %></div>
       <div id="category-<%=user_clothe.clothe.id%>">#<%= user_clothe.clothe.category %></div>
       <div id="gender-<%=user_clothe.clothe.id%>">#<%= user_clothe.clothe.gender %></div>
       <div style="font-size: 0.8rem;"><%= UserClothe.replica(user_clothe).count %>人がMyClosetに登録中</div>
