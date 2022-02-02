@@ -24,7 +24,8 @@ Rails.application.routes.draw do
     end
     collection do
       get 'search'
-      get 'fitting'
+      get 'fitting', to: 'fittings#index'
+      post 'fitting', to: 'fittings#create'
     end
   end
 end

@@ -18,14 +18,18 @@ module ApplicationHelper
         description: 'ブラウザ上で試着ができるサービス。', 
         type: 'website',
         url: request.original_url,
-        image: image_url('ogp.png'),
+        image: 
+        if @tweeted_fitting_image.present?
+          @tweeted_fitting_image.image
+        else
+          image_url('ogp.png')
+        end,
         locale: 'ja_JP',
       },
       twitter: {
         card: 'summary_large_image',
         description: 'ブラウザ上で試着ができるサービス。',
-        title: 'LOOK',
-        image: image_url('ogp.png'),
+        title: 'LOOK'
       }
     }
   end

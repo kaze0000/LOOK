@@ -1,4 +1,5 @@
 <%= render 'shared/nav' %>
+<p id="alert"><%= flash[:alert].html_safe if !flash[:alert].blank? %></p>
 <div id="selected-bottoms-true" data-json="<%=@selected_bottoms.present?%>">
 <% if @selected_bottoms.present?%>
   <% for n in 0...@selected_bottoms.count %>
@@ -18,6 +19,13 @@
 <div class="box-wrapper">
   <div class="canvas-wrapper">
     <canvas id="canvas" width="600" height="600"></canvas>
+    <%= form_with model: @fitting, url: fitting_myclosets_path, id: 'fitting-form' do |f| %>
+      <%= f.hidden_field :image, value: '' %>
+    <% end %>
+    <span id="save-button">Save</span>
+    <%= link_to "https://twitter.com/share?url=https://www.look-closet.com/&text=服が試着できるサービス LOOK", class: 'twitter', target: '_blank' do %>
+      <i class="fab fa-twitter"></i>
+    <% end %>
   </div>
   <div class="buttons flex">
     <button class="button" id="download">Download</button>
@@ -27,6 +35,14 @@
 </div>
 <script>
 $(function () {
+  // コーディネートの保存
+  $('#save-button').on('click',function(){
+    var canvas = document.getElementById("canvas");
+    var url = canvas.toDataURL("image/png");
+    $('#fitting_image').val(url);
+    $('#fitting-form').submit();
+  })
+
   var w = $('.canvas-wrapper').width();
   var h = $('.canvas-wrapper').height();
   $('#canvas').attr('width', w);
