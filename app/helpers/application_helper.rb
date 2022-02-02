@@ -19,8 +19,8 @@ module ApplicationHelper
         type: 'website',
         url: request.original_url,
         image: 
-        if @tweeted_fitting_image.present?
-          @tweeted_fitting_image.image
+        if @tweet_item.present?
+          @tweet_item[0].image
         else
           image_url('ogp.png')
         end,
