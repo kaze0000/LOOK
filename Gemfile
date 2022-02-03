@@ -40,6 +40,7 @@ gem 'enum_help'
 # Image Upload
 gem 'carrierwave'
 gem 'aws-sdk-s3'
+gem 'carrierwave-base64'
 
 # pagenation
 gem 'kaminari'

@@ -7,7 +7,7 @@ class FittingsController < ApplicationController
   end
 
   def create
-    @fitting = Fitting.new(image: params[:fitting][:image], user_id: current_user.id)
+    @fitting = Fitting.new(fitting_params)
     if @fitting.save
       redirect_to fitting_myclosets_path
       flash[:alert] = '保存に成功しました'
@@ -15,6 +15,12 @@ class FittingsController < ApplicationController
       redirect_to fitting_myclosets_path
       flash[:alert] = '保存に失敗しました'
     end
+  end
+
+  private
+  
+  def fitting_params
+    params.require(:fitting).permit(:user_id, :image)
   end
   
 end
