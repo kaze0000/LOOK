@@ -16,5 +16,5 @@ class FittingsController < ApplicationController
       flash[:alert] = '保存に失敗しました'
     end
   end
-  
+
 end
