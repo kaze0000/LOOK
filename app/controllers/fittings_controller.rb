@@ -1,4 +1,5 @@
 class FittingsController < ApplicationController
+
   def index
     @selected_bottoms = Clothe.joins(:user_clothes).bottoms.merge(UserClothe.selected(current_user))
     @selected_tops = Clothe.joins(:user_clothes).tops.merge(UserClothe.selected(current_user))

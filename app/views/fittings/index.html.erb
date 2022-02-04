@@ -19,7 +19,7 @@
 <div class="box-wrapper">
   <div class="canvas-wrapper">
     <canvas id="canvas" width="600" height="600"></canvas>
-    <%= form_with model: @fitting, url: fitting_myclosets_path, local: true, id: 'fitting-form' do |f| %>
+    <%= form_with model: @fitting, url: fittings_path, local: true, id: 'fitting-form' do |f| %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.hidden_field :image, value: '' %>
     <% end %>

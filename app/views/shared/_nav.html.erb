@@ -3,7 +3,7 @@
     <ul class="flex">
       <li class="<%= 'current-nav' if current_page?(clothes_path)%>"><%= link_to 'ShareCloset', clothes_path %></li>
       <li class="<%= 'current-nav' if current_page?(myclosets_path)%>"><%= link_to 'MyCloset', myclosets_path, 'data-turbolinks': false %></li>
-      <li class="<%= 'current-nav' if current_page?(fitting_myclosets_path)%>"><%= link_to 'FittingRoom', fitting_myclosets_path %></li>
+      <li class="<%= 'current-nav' if current_page?(fittings_path)%>"><%= link_to 'FittingRoom', fittings_path %></li>
     </ul>
   </div>
 </nav>
