@@ -43,10 +43,15 @@
     }
   }
   .item-detail-wrapper{
-    // width: 90%;
-    // margin: 5% auto;
     padding: 5%;
     background-color: #918f8f0a;
+    .brandname{
+      font-size:1.4rem;
+      max-width: 250px;
+      @include sp{
+        max-width: 100px;
+      }
+    }
     .item-select-button{
       text-align: center;
       margin: 7% 0;
