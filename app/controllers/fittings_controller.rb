@@ -9,6 +9,11 @@ class FittingsController < ApplicationController
   def create
     @fitting = Fitting.new(fitting_params)
     if @fitting.save
+      # s3に保存
+      file = File.new("public/#{@fitting.image.url}")
+      s3 = Aws::S3::Resource.new
+      obj = s3.bucket('look-closet').object("fitting/#{@fitting.id}.png")
+      obj.upload_file(file.path, acl: 'public-read')
       redirect_to fitting_myclosets_path
       flash[:alert] = '保存に成功しました'
     else
