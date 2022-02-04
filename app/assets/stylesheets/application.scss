@@ -214,31 +214,6 @@ nav{
       color: #333;
     }
   }
-  .twitter-share{
-    position: absolute;
-    left: 15%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    color: #fff;
-    border-radius: 50%;
-    height: 25px;
-    width: 25px;
-    height: 25px;
-    @include sp{
-      left: 10%;
-    }
-    a{
-      font-size: 2rem;
-      color: rgb(41, 185, 242);
-      display: block;
-      top: 50%;
-      left: 50%;
-      padding: 2%;
-      transform: translate(-50%, -50%);
-      position: absolute;
-      pointer-events: auto;
-    }
-  }
 }
 // pagination
 
