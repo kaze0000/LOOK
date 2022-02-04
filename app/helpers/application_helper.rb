@@ -20,7 +20,7 @@ module ApplicationHelper
         url: request.original_url,
         image: 
         if @tweet_item.present?
-          @tweet_item[0].image
+          "https://look-closet.s3.ap-northeast-1.amazonaws.com/fitting/#{@tweet_item[0].id}.png"
         else
           image_url('ogp.png')
         end,
