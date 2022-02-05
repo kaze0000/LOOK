@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
       resources :fittings, only: %i[index create] do
-        collection do
+        member do
           get 'secret'
         end
       end
