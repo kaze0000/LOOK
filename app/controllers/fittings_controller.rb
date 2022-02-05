@@ -5,6 +5,10 @@ class FittingsController < ApplicationController
     @selected_bottoms = Clothe.joins(:user_clothes).bottoms.merge(UserClothe.selected(current_user))
     @selected_tops = Clothe.joins(:user_clothes).tops.merge(UserClothe.selected(current_user))
     @fitting = Fitting.new
+    @fitting_number = params[:fitting_number]
+    if @fitting_number.present?
+      @tweet_item = Fitting.find(@fitting_number)
+    end
   end
 
   def create
@@ -15,7 +19,7 @@ class FittingsController < ApplicationController
       s3 = Aws::S3::Resource.new
       obj = s3.bucket('look-closet').object("fitting/#{@fitting.id}.png")
       obj.upload_file(file.path, acl: 'public-read')
-      redirect_to fittings_path
+      redirect_to fittings_path(fitting_number: @fitting.id)
       flash[:alert] = '保存に成功しました'
     else
       redirect_to fitting_myclosets_path
@@ -24,7 +28,7 @@ class FittingsController < ApplicationController
   end
 
   def secret
-    @tweet_item = Fitting.where(user_id: current_user.id).order(updated_at: :desc).limit(1)
+    @tweet_item = Fitting.find(params[:id])
   end
 
   private
