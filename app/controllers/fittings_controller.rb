@@ -5,10 +5,6 @@ class FittingsController < ApplicationController
     @selected_bottoms = Clothe.joins(:user_clothes).bottoms.merge(UserClothe.selected(current_user))
     @selected_tops = Clothe.joins(:user_clothes).tops.merge(UserClothe.selected(current_user))
     @fitting = Fitting.new
-    @fitting_number = params[:fitting_number]
-    if @fitting_number.present?
-      @tweet_item = Fitting.find(@fitting_number)
-    end
   end
 
   def create
@@ -19,11 +15,10 @@ class FittingsController < ApplicationController
       s3 = Aws::S3::Resource.new
       obj = s3.bucket('look-closet').object("fitting/#{@fitting.id}.png")
       obj.upload_file(file.path, acl: 'public-read')
-      redirect_to fittings_path(fitting_number: @fitting.id)
-      flash[:alert] = '保存に成功しました'
+      redirect_to ("https://twitter.com/intent/tweet?text=服が試着できるサービス%20LOOK&url=https://www.look-closet.com/myclosets/fittings/#{@fitting.id}/secret/")
     else
-      redirect_to fitting_myclosets_path
-      flash[:alert] = '保存に失敗しました'
+      redirect_to fittings_path
+      flash[:alert] = 'ツイートに失敗しました'
     end
   end
 

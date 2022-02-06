@@ -23,10 +23,7 @@
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.hidden_field :image, value: '' %>
     <% end %>
-    <span id="save-button">Save</span>
-    <%= link_to "https://twitter.com/intent/tweet?text=服が試着できるサービス LOOK https://www.look-closet.com/myclosets/fittings/#{@fitting_number}/secret", class: 'twitter', target: '_blank' do %>
-      <i class="fab fa-twitter"></i>
-    <% end %>
+    <span id="twitter"><i class="fab fa-twitter"></i></span>
   </div>
   <div class="buttons flex">
     <button class="button" id="download">Download</button>
@@ -37,7 +34,7 @@
 <script>
 $(function () {
   // コーディネートの保存
-  $('#save-button').on('click',function(){
+  $('#twitter').on('click',function(){
     var canvas = document.getElementById("canvas");
     var url = canvas.toDataURL("image/png");
     $('#fitting_image').val(url);
