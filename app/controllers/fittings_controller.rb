@@ -15,7 +15,7 @@ class FittingsController < ApplicationController
       s3 = Aws::S3::Resource.new
       obj = s3.bucket('look-closet').object("fitting/#{@fitting.id}.png")
       obj.upload_file(file.path, acl: 'public-read')
-      redirect_to ("https://twitter.com/intent/tweet?text=服が試着できるサービス%20LOOK&url=https://www.look-closet.com/myclosets/fittings/#{@fitting.id}/secret/")
+      redirect_to ("https://twitter.com/intent/tweet?text=服が試着できるサービス%20LOOK&url=https://www.look-closet.com/myclosets/fittings/#{@fitting.id}/coordinate/")
     else
       redirect_to fittings_path
       flash[:alert] = 'ツイートに失敗しました'
