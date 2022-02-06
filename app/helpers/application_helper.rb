@@ -17,12 +17,7 @@ module ApplicationHelper
         site_name: 'LOOK',
         description: 'ブラウザ上で試着ができるサービス。', 
         type: 'website',
-        url: 
-        if @fitting.present?
-          "https://www.look-closet.com/myclosets/fittings/#{@fitting_number}/secret"
-        else
-          request.original_url
-        end,
+        url: request.original_url,
         image: 
         if @tweet_item.present?
           "https://look-closet.s3.ap-northeast-1.amazonaws.com/fitting/#{@tweet_item.id}.png"
