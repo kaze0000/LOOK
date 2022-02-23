@@ -36,5 +36,5 @@ https://www.look-closet.com/
 https://www.figma.com/file/zZJsJyUjjlwYso0Krk0j2p/Untitled?node-id=58%3A2
 
 ## ER図
-https://user-images.githubusercontent.com/74648659/150444744-55413c65-5467-4e39-95d4-f21e94dc089b.png
+<img src="https://i.gyazo.com/2fc94aad52eb00bf0f6a630e06c38a75.png">
 
