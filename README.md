@@ -2,6 +2,7 @@
 
 ## サービス概要
 ブラウザ上で試着ができるサービス。
+https://www.look-closet.com/
 
 ## メインのターゲットユーザー
 - ネットで服を購入したいけれど、その前に服の組み合わせを試してみたい人
@@ -31,15 +32,9 @@
 - 大学時代にずっとアパレル販売のアルバイトをしていたため、どの組み合わせが格好良いかを常に考えていて、その体験をweb上で表現したいと思ったから
 - ネットで買って失敗するリスクを下げたいから
 
-## スケジュール
-README〜ER図作成：12/31 〆切
-メイン機能実装：1/1 - 2/15
-β版をRUNTEQ内リリース（MVP）：2/15〆切
-本番リリース：2/28
-
 ## 画面遷移図
 https://www.figma.com/file/zZJsJyUjjlwYso0Krk0j2p/Untitled?node-id=58%3A2
 
 ## ER図
-https://user-images.githubusercontent.com/74648659/150444744-55413c65-5467-4e39-95d4-f21e94dc089b.png
+<img src="https://i.gyazo.com/2fc94aad52eb00bf0f6a630e06c38a75.png">
 
