@@ -1,6 +1,6 @@
 # LOOK
 
-## サービス概要
+## サービス概要 
 ブラウザ上で試着ができるサービス。
 https://www.look-closet.com/
 
