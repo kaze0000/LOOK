@@ -12,7 +12,7 @@ class MyclosetsController < ApplicationController
     @brand_name = BrandName.new
     @clothe = @brand_name.build_clothe
   end
-  
+
   def create
     account = RemoveBg.account_info
     if account.api.free_calls == 0
@@ -24,18 +24,22 @@ class MyclosetsController < ApplicationController
     clothe = @brand_name.clothe
     if File.exist?("public/#{clothe.image.url}")
       if @brand_name.save
-        user_clothe = UserClothe.new(user_id: current_user.id, clothe_id: clothe.id)
-        user_clothe.save
-        # 背景削除の処理
-        result = RemoveBg.from_file("public/#{clothe.image.url}")
-        result.save("public/#{clothe.image.url}", overwrite: true)
-        # s3に保存
-        file = File.new("public/#{clothe.image.url}")
-        s3 = Aws::S3::Resource.new
-        obj = s3.bucket('look-closet').object("#{clothe.id}.png")
-        obj.upload_file(file.path, acl: 'public-read')
-        redirect_to myclosets_path
-        flash[:alert] = '登録に成功しました。'
+        ActiveRecord::Base.transaction do
+          user_clothe = UserClothe.new(user_id: current_user.id, clothe_id: clothe.id)
+          user_clothe.save
+          # 背景削除の処理
+          result = RemoveBg.from_file("public/#{clothe.image.url}")
+          result.save("public/#{clothe.image.url}", overwrite: true)
+          # s3に保存
+          file = File.new("public/#{clothe.image.url}")
+          s3 = Aws::S3::Resource.new
+          obj = s3.bucket('look-closet').object("#{clothe.id}.png")
+          obj.upload_file(file.path, acl: 'public-read')
+          redirect_to myclosets_path
+          flash[:alert] = '登録に成功しました。'
+        end
+      rescue
+        render :new
       else
         redirect_to myclosets_path
         flash[:alert] = '登録に失敗しました。'
@@ -45,7 +49,7 @@ class MyclosetsController < ApplicationController
       flash[:alert] = '画像の読み込みに失敗しました。ファイル名は半角英数字のみで指定してください。'
     end
   end
-  
+
   def edit
     @brand_name = @user_clothe.clothe.brand_name
   end
