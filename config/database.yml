@@ -84,3 +84,4 @@ production:
   database: LOOK_production
   username: LOOK
   password: <%= ENV['LOOK_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
